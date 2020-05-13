@@ -1,0 +1,103 @@
+<template>
+  <div class="ticket">
+    <div class="ticket-box">
+      <div class="ticket-item-top-kong"></div>
+      <div class="ticket-item ticket-item-top-word" v-for="item in top1">
+        {{item}}
+      </div>
+    </div>
+    <div v-for="item in tablea" style="margin-top: .5rem;display: flex;">
+      <div class="ticket-item-top-kong">{{item.address}}</div>
+      <div style="flex: 1;">
+        <div class="ticket-box">
+          <div class="ticket-item ticket-item-top-title" v-for="item1 in item.tableData1">
+            {{item1}}
+          </div>
+        </div>
+        <div class="ticket-box">
+          <div class="ticket-item ticket-item-top-title" v-for="item2 in item.tableData2">
+            {{item2}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="no-data">
+      没有更多数据了
+    </div>
+
+  </div>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        top1: ['原价', '打折', '渠道', '免单', '小计'],
+        tablea: [{
+            address: '成年联票B（含欢乐大马戏）',
+            tableData1: ['300人', '300人', '300人', '300人', '300人'],
+            tableData2: ['300人', '300人', '300人', '300人', '300人']
+          },
+          {
+            address: '成年联票B（含欢乐大马戏）',
+            tableData1: ['300人', '300人', '300人', '300人', '300人'],
+            tableData2: ['300人', '300人', '300人', '300人', '300人']
+          },
+          {
+            address: '成年联票B（含欢乐大马戏）',
+            tableData1: ['300人', '300人', '300人', '300人', '300人'],
+            tableData2: ['300人', '300人', '300人', '300人', '300人']
+          },
+          {
+            address: '成年联票B（含欢乐大马戏）',
+            tableData1: ['300人', '300人', '300人', '300人', '300人'],
+            tableData2: ['300人', '300人', '300人', '300人', '300人']
+          }
+        ]
+
+      }
+    },
+
+  }
+</script>
+
+<style lang="less" scoped>
+  .ticket-item-top-kong {
+    width: 1.5rem;
+  }
+
+  .ticket {
+    background-color: #fff;
+
+    .ticket-box {
+      display: flex;
+
+      .ticket-item-top-word {
+        color: #999999;
+        font-size: .426rem;
+        text-align: center;
+        height: .9866rem;
+        line-height: .9866rem;
+      }
+
+      .ticket-item-top-title {
+        color: #333333;
+        font-size: .346rem;
+        text-align: center;
+        margin-top: .2rem;
+      }
+
+      .ticket-item {
+        flex: 1;
+      }
+    }
+
+    .no-data {
+      font-size: .346rem;
+      color: #666666;
+      text-align: center;
+      padding: 2rem 0;
+    }
+  }
+</style>

@@ -2,7 +2,7 @@
   <div class="home">
     <div class="home-top">
       <div class="home-header">
-        <van-button class="home-header-button" plain size="small" type="primary">退出</van-button>
+        <van-button class="home-header-button" plain size="small" type="primary" @click="goRouter('/loging')">退出</van-button>
       </div>
       <div class="home-user">
         <img class="home-user-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/touxiang.jpg" alt="">
@@ -50,13 +50,13 @@
           <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n5.png" alt="">
           <div>OTA销售表</div>
         </div>
-        <div class="home-bottom-item-data">
+        <div class="home-bottom-item-data" @click="goRouter('/orderManage')">
           <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n1.png" alt="">
           <div>订单管理</div>
         </div>
       </div>
       <div class="home-bottom-item">
-        <div class="home-bottom-item-data">
+        <div class="home-bottom-item-data" @click="goRouter('/saleManage')">
           <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n2.png" alt="">
           <div>售票管理</div>
         </div>
@@ -64,17 +64,17 @@
           <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n3.png" alt="">
           <div>财务管理</div>
         </div>
-        <div class="home-bottom-item-data">
+        <div class="home-bottom-item-data" @click="goRouter('/orderExamine')">
           <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n4.png" alt="">
           <div>订单审核</div>
         </div>
       </div>
       <div class="home-bottom-item">
-        <div class="home-bottom-item-data">
+        <div class="home-bottom-item-data" @click="goRouter('/channelManage')" >
           <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n5.png" alt="">
           <div>渠道管理</div>
         </div>
-        <div class="home-bottom-item-data">
+        <div class="home-bottom-item-data" @click="goRouter('/accountSet')" >
           <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n6.png" alt="">
           <div>账户设置</div>
         </div>
@@ -193,6 +193,7 @@
           .home-bottom-item-data-img {
             width: .746rem;
             height: .746rem;
+            margin-bottom: .2rem;
           }
         }
       }

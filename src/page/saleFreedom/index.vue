@@ -18,7 +18,7 @@
     <van-cell-group class="free-bottom">
       <van-field label="购票人电话" placeholder="请输入电话" />
     </van-cell-group>
-    <van-field v-model="message" rows="2" autosize label="留言" type="textarea" maxlength="50" placeholder="请输入留言"
+    <van-field v-model="message" rows="2" autosize label="备注(选填)" type="textarea" maxlength="50" placeholder="请输入内容"
       show-word-limit />
     <van-calendar v-model="show" type="range" />
     <div class="free-footer">
