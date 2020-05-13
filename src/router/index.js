@@ -18,5 +18,21 @@ export default new Router({
           title: '首页'
         }
       },
+      {
+         path: '/saleFreedom',
+         name: 'saleFreedom',
+         component: () => import('@/page/saleFreedom/index'),
+         meta: {
+           title: '出免费票'
+         }
+       },
+       {
+          path: '/unpdatePiao',
+          name: 'unpdatePiao',
+          component: () => import('@/page/unpdatePiao/index'),
+          meta: {
+            title: '更新取票机余票'
+          }
+        },
   ]
 })

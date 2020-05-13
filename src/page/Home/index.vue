@@ -19,26 +19,68 @@
         <div class="home-sale-price-item">
           <div>
             <van-icon name="chat-o" color="#1989fa" />
-            总购票人数
+            总售票金额
           </div>
-          <div>12312</div>
+          <div>¥15196.21</div>
         </div>
       </div>
     </div>
 
     <div class="home-bottom">
       <div class="home-bottom-item">
-        <div class="home-bottom-item-data">
+        <div class="home-bottom-item-data" @click="goRouter('/unpdatePiao')">
           <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n3.png" alt="">
           <div>更新取票机余票</div>
         </div>
-        <div class="home-bottom-item-data">
+        <div class="home-bottom-item-data" @click="goRouter('/saleFreedom')">
           <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n3.png" alt="">
           <div>出免费票</div>
         </div>
         <div class="home-bottom-item-data">
           <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n3.png" alt="">
           <div>套票查车</div>
+        </div>
+      </div>
+      <div class="home-bottom-item">
+        <div class="home-bottom-item-data">
+          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n5.png" alt="">
+          <div>报表统计</div>
+        </div>
+        <div class="home-bottom-item-data">
+          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n5.png" alt="">
+          <div>OTA销售表</div>
+        </div>
+        <div class="home-bottom-item-data">
+          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n1.png" alt="">
+          <div>订单管理</div>
+        </div>
+      </div>
+      <div class="home-bottom-item">
+        <div class="home-bottom-item-data">
+          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n2.png" alt="">
+          <div>售票管理</div>
+        </div>
+        <div class="home-bottom-item-data">
+          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n3.png" alt="">
+          <div>财务管理</div>
+        </div>
+        <div class="home-bottom-item-data">
+          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n4.png" alt="">
+          <div>订单审核</div>
+        </div>
+      </div>
+      <div class="home-bottom-item">
+        <div class="home-bottom-item-data">
+          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n5.png" alt="">
+          <div>渠道管理</div>
+        </div>
+        <div class="home-bottom-item-data">
+          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n6.png" alt="">
+          <div>账户设置</div>
+        </div>
+        <div class="home-bottom-item-data">
+          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n7.png" alt="">
+          <div>日志记录</div>
         </div>
       </div>
     </div>
@@ -55,6 +97,11 @@
     components: {
       [Button.name]: Button,
       [Icon.name]: Icon
+    },
+    methods:{
+      goRouter(url){
+        this.$router.push({path:url})
+      }
     }
   }
 </script>
@@ -98,15 +145,24 @@
       .home-sale-price {
         height: 1.2rem;
         text-align: center;
-        padding: .24rem 0 0 0;
+        padding: .24rem 0 .24rem 0;
         font-size: 0.4rem;
         width: 100%;
         border-top: 1PX solid #ebebeb;
         display: flex;
+        box-sizing: content-box;
 
         .home-sale-price-item {
           flex: 1;
           font-size: .38rem;
+          border-right: 1PX solid #eee;
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+
+          &:last-child {
+            border-radius: none;
+          }
         }
       }
     }
@@ -127,6 +183,12 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          border-bottom: 1PX solid #eee;
+          border-right: 1PX solid #eee;
+
+          &:last-child {
+            border-right: none;
+          }
 
           .home-bottom-item-data-img {
             width: .746rem;
