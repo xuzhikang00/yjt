@@ -24,11 +24,49 @@
         <sale></sale>
       </van-tab>
       <van-tab title="昨日售票">
-
+        <div class="sale-manage-btn">
+          <van-button round type="info" class="sale-manage-button" @click="show=!show">所有窗口</van-button>
+        </div>
+        <div class="home-sale-price">
+          <div class="home-sale-price-item">
+            <div>
+              <van-icon name="chat-o" color="#1989fa" />
+              总购票人数
+            </div>
+            <div>12312</div>
+          </div>
+          <div class="home-sale-price-item">
+            <div>
+              <van-icon name="chat-o" color="#1989fa" />
+              总售票金额
+            </div>
+            <div>¥15196.21</div>
+          </div>
+        </div>
+        <sale></sale>
       </van-tab>
 
       <van-tab title="全部售票">
-
+        <div class="sale-manage-btn">
+          <van-button round type="info" class="sale-manage-button" @click="show=!show">所有窗口</van-button>
+        </div>
+        <div class="home-sale-price">
+          <div class="home-sale-price-item">
+            <div>
+              <van-icon name="chat-o" color="#1989fa" />
+              总购票人数
+            </div>
+            <div>12312</div>
+          </div>
+          <div class="home-sale-price-item">
+            <div>
+              <van-icon name="chat-o" color="#1989fa" />
+              总售票金额
+            </div>
+            <div>¥15196.21</div>
+          </div>
+        </div>
+        <sale></sale>
       </van-tab>
     </van-tabs>
     <div class="orsale-manage-button">
