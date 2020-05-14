@@ -1,25 +1,52 @@
 <template>
   <div class="orderExamine">
-    <div class="free-home" @click="goHome">
-      <van-icon class="free-home-icon" name="wap-home-o" />
+   
+    <div class="orderExamine-xg">
+      <van-cell title="订单号" value="2211">
+        <template #icon>
+            <van-icon name="card" color="#ffa312" size=".48rem" style="line-height: inherit;margin-right: .3rem;" />
+          </template>
+      </van-cell>
+     <van-cell title="游玩日期" value="2020-05-14">
+       <template #icon>
+           <van-icon name="column" color="#95e1bc" size=".48rem" style="line-height: inherit;margin-right: .3rem;" />
+         </template>
+     </van-cell>
+     <van-cell title="产品类型" value="成都">
+       <template #icon>
+           <van-icon name="info" color="#95e1bc" size=".48rem" style="line-height: inherit;margin-right: .3rem;" />
+         </template>
+     </van-cell>
     </div>
-    <div v-if="!xgSwitch" style="height: 100%;">
-      <channel @xgDefine="xgDefine"></channel>
-      <div class="order-manage-button">
-        <van-button class="order-manage-button-item" type="primary" size="large" @click="xgSwitch=true">添加渠道</van-button>
-      </div>
+    <div class="orderExamine-xg">
+      <van-cell title="类型" value="免单票">
+        <template #icon>
+            <van-icon name="card" color="#ffa312" size=".48rem" style="line-height: inherit;margin-right: .3rem;" />
+          </template>
+      </van-cell>
+     <van-cell title="预订单价" value="0">
+       <template #icon>
+           <van-icon name="column" color="#95e1bc" size=".48rem" style="line-height: inherit;margin-right: .3rem;" />
+         </template>
+     </van-cell>
+     <van-cell title="预订票数" value="1">
+       <template #icon>
+           <van-icon name="info" color="#95e1bc" size=".48rem" style="line-height: inherit;margin-right: .3rem;" />
+         </template>
+     </van-cell>
     </div>
-    <div v-if="xgSwitch" class="orderExamine-xg">
-      <van-cell title="所属角色" is-link :value="user" @click="show=!show" />
-      <van-cell title="登录账号" value="hdah1" />
-      <van-field label="用户姓名" placeholder="请输入用户姓名" />
-      <van-field label="手机号" placeholder="请输入手机号" />
-      <van-field label="密码" placeholder="*留空则不修改" />
-      <van-field label="支付密码" placeholder="*留空则不修改" />
-      <van-cell title="授权票种" is-link :value="pzval" @click="show1=!show1" />
-      <div class="orderExamine-xg-button">
-        <van-button class="orderExamine-xg-button-item" type="primary" size="large" @click='save'>保存</van-button>
-      </div>
+    <div class="orderExamine-xg">
+      <van-cell title="订单状态" value="未使用" />
+      <van-cell title="游客姓名" value="免费下单" />
+      <van-cell title="游客电话" value="123141" />
+      <van-cell title="支付方式" class="l" value="支付成功" />
+      <van-cell title="付款类型" class="l" value="提前预付" />
+      <van-cell title="收款类型" class="l" value="现金" />
+      <van-cell title="订单类型" value="无导游" />
+      <van-cell title="渠道客户" value="无" />
+      <van-cell title="订单总价" class="h" value="0元" />
+      <van-cell title="下单时间" value="2020-06-14 22:40:11" />
+      <van-cell title="下单电话" value="414124151" />
     </div>
     <van-popup v-model="show" position="bottom">
       <van-picker title="所属角色" show-toolbar :columns="columns" @confirm="onConfirm" @cancel="onCancel" @change="onChange" />
@@ -38,7 +65,9 @@
         </div>
       </div>
     </van-popup>
-
+    <div class="free-home" @click="goHome">
+      <van-icon class="free-home-icon" name="wap-home-o" />
+    </div>
   </div>
 </template>
 
@@ -209,10 +238,25 @@
     .orderExamine-xg {
       padding-top: .5rem;
 
-      /deep/ .van-cell__title,
-      .van-cell__value {
+      /deep/ .van-cell__title {
         font-size: .4533rem;
-        color: #333333;
+        color: #95e1bc;
+      }
+      /deep/ .van-cell__value {
+        font-size: .4533rem;
+        color: #999;
+      }
+      .l{
+        /deep/ .van-cell__value {
+          font-size: .4533rem;
+          color: #1aad19;
+        }
+      }
+      .h{
+        /deep/ .van-cell__value {
+          font-size: .4533rem;
+          color: #E64340;
+        }
       }
 
       /deep/ input::-webkit-input-placeholder {

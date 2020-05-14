@@ -1,40 +1,7 @@
 <template>
   <div class="account">
-    <div class="account-content" v-if="switchNum==1">
-      <van-cell-group>
-        <van-cell title="修改登录密码" @click="toY('/accountSetmm')" is-link >
-          <template #icon>
-            <van-icon class="iconfont" color="#f6b822" size=".533rem" style="margin-right: .3rem;" class-prefix='icon' name="suo" />
-          </template>
-        </van-cell>
-        <van-cell title="修改支付密码" @click="toY('/accountSetzf')" is-link >
-          <template #icon>
-            <van-icon class="iconfont" color="#f6b822" size=".533rem" style="margin-right: .3rem;" class-prefix='icon' name="suo" />
-          </template>
-        </van-cell>
-        <van-cell title="绑定微信" @click="toY('/accountSetbd')"  is-link >
-          <template #icon>
-            <van-icon class="iconfont" color="#f6b822" size=".533rem" style="margin-right: .3rem;" class-prefix='icon' name="suo" />
-          </template>
-        </van-cell>
-        <van-cell title="添加成员" @click="toY('/accountSetbd')"  is-link >
-          <template #icon>
-            <van-icon class="iconfont" color="#f6b822" size=".533rem" style="margin-right: .3rem;" class-prefix='icon' name="suo" />
-          </template>
-        </van-cell>
-      </van-cell-group>
-    </div>
 
-    <div class="account-content" v-if="switchNum==2">
-      <van-field label="原密码" placeholder="请输入密码" />
-      <van-field label="新密码" placeholder="请输入新密码"/>
-      <van-field label="确认密码" placeholder="请输入确认密码" />
-      <div class="account-content-button">
-        <van-button @click="switchNum=1" class="account-content-button-item" type="primary" style="width: 90%;" size="large">提交</van-button>
-      </div>
-    </div>
-
-    <div class="account-content" v-if="switchNum==3">
+    <div class="account-content">
       <van-field label="新密码" placeholder="请输入密码" />
       <van-field label="确认密码" placeholder="请输入确认密码" />
       <van-field center clearable label="短信验证码" placeholder="请输入短信验证码">
@@ -45,28 +12,9 @@
       </van-field>
       <van-field label="手机验证码" placeholder="请输入验证码" />
       <div class="account-content-button">
-        <van-button class="account-content-button-item" @click="switchNum=1" type="primary" style="width: 90%;" size="large">提交</van-button>
+        <van-button class="account-content-button-item" type="primary" style="width: 90%;" size="large" @click="toY('/accountSet')">提交</van-button>
       </div>
     </div>
-
-
-    <div class="account-content" v-if="switchNum==4">
-      <van-cell-group>
-        <van-cell title="所属角色" @click="show=!show" is-link />
-        <van-field label="登录账户" placeholder="请输入登录账户" />
-        <van-field label="用户姓名" placeholder="请输入用户姓名"/>
-        <van-field label="手机号" placeholder="请输入手机号"/>
-        <van-field label="密码" placeholder="请输入密码"/>
-        <van-field label="确认密码"  placeholder="请输入确认密码"/>
-      </van-cell-group>
-      <div class="account-content-button">
-        <van-button class="account-content-button-item" @click="switchNum=1"  type="primary" style="width: 90%;" size="large">保存</van-button>
-      </div>
-    </div>
-
-    <van-popup v-model="show" position="bottom">
-      <van-picker title="所属角色" show-toolbar :columns="columns" @confirm="onConfirm" @cancel="onConfirm" />
-    </van-popup>
     <div class="free-home" @click="goHome">
       <van-icon class="free-home-icon" name="wap-home-o" />
     </div>
@@ -106,8 +54,10 @@
       }
     },
     methods: {
-      toY(val){
-        this.$router.push({path:val})
+      toY(val) {
+        this.$router.push({
+          path: val
+        })
       },
       onConfirm() {
         this.show = false
@@ -158,6 +108,7 @@
       /* Internet Explorer 10+ */
       font-size: .4533rem;
     }
+
     .account-content {
       padding-top: .5rem;
 
@@ -168,7 +119,8 @@
       .account-content-button {
         margin-top: .5rem;
         text-align: center;
-        .account-content-button-item{
+
+        .account-content-button-item {
           background-color: #1aad19;
           height: 1.226rem;
           border-radius: .15rem;

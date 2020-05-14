@@ -104,7 +104,7 @@
         没有更多数据了
       </div>
       <div class="orsale-manage-button">
-        <van-button class="orsale-manage-button-item" type="primary" size="large" @click="ssSwitch=true;">搜素</van-button>
+        <van-button class="orsale-manage-button-item" type="primary" size="large" @click="ssSwitch=true;">搜索</van-button>
       </div>
     </div>
     <div style="padding-top: .5rem;" v-else>
@@ -122,7 +122,7 @@
         <van-cell title="打折面单人" @click="showS6 = true" is-link :value="xz5" />
         <van-cell title="收款类型" @click="showS8 = true" is-link :value="xz6" />
         <div class="ss-button">
-          <van-button class="ss-button-item" type="primary" size="large" @click="ssjgBnt()">搜素</van-button>
+          <van-button class="ss-button-item" type="primary" size="large" @click="ssjgBnt()">搜索</van-button>
         </div>
     </div>
 
@@ -134,7 +134,7 @@
       <div class="pop-header">
         <div></div>
         <div>所有窗口</div>
-        <div style="color: #04be02;" @click="show=false">关闭</div>
+        <div style="color: #04be02;margin-right: .3rem;" @click="show=false">关闭</div>
       </div>
       <div class="pop-header-content">
         <div class="pop-header-content-item" @click="getName('所有窗口')">
@@ -353,7 +353,6 @@
       ssjgBnt(){
         this.ssSwitch=false;
         this.titleFont='搜索结果'
-        console.log(this.titleFont)
       },
          onConfirm(value, index) {
             this.xz1=value
@@ -518,6 +517,7 @@
         width: 3.46rem;
         background-color: #1aad19;
         color: #fff;
+        border: none;
       }
     }
 
@@ -550,7 +550,7 @@
       margin: .5rem auto;
       .ss-button-item{
         background-color: #1aad19;
-        border-radius: 5px;
+        border-radius: .15rem;
         font-size: .48rem;
       }
     }
@@ -567,7 +567,7 @@
 
       .orsale-manage-button-item {
         background-color: #1aad19;
-        border-radius: 5px;
+        border-radius: .15rem;
         font-size: .48rem;
       }
     }

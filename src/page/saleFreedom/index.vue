@@ -4,10 +4,9 @@
       免费票快速下单
     </div>
     <van-cell-group>
-      <van-cell title="出游日期" @click="show=!show" value="2010-02-23" icon="location-o" is-link>
+      <van-cell title="出游日期" @click="show=true" :value="res" icon="location-o" is-link>
         <template #icon>
-          <van-icon class="iconfont" color="#10aeff" size=".533rem" style="margin-right: .3rem;" class-prefix='icon'
-            name="rili" />
+          <van-icon class="iconfont" color="#10aeff" size=".4rem" style="margin-right: .3rem;" class-prefix='icon' name="rili" />
         </template>
       </van-cell>
     </van-cell-group>
@@ -26,13 +25,13 @@
       </div>
     </div>
     <van-cell-group class="free-bottom">
-      <van-field label="购票人电话" placeholder="请输入电话" />
+      <van-field label="购票人电话" class="h" label-width="2.6rem" placeholder="请输入电话" />
     </van-cell-group>
     <van-field class="xt" v-model="message" rows="2" autosize label="备注(选填)" type="textarea" maxlength="50" placeholder="请输入内容"
       show-word-limit />
-    <van-calendar v-model="show" type="range" />
+    <van-calendar v-model="show" @confirm="onConfirm" />
     <div class="free-footer">
-      <van-button type="primary" class="free-footer-button">提交订单</van-button>
+      <van-button type="primary" class="free-footer-button" @click="toY('/orderDetail')">提交订单</van-button>
     </div>
     <div class="free-home" @click="goHome">
       <van-icon class="free-home-icon" name="wap-home-o" />
@@ -47,7 +46,8 @@
     CellGroup,
     Field,
     Button,
-    Icon
+    Icon,
+    Notify
   } from 'vant';
   export default {
     components: {
@@ -56,17 +56,40 @@
       [CellGroup.name]: CellGroup,
       [Field.name]: Field,
       [Button.name]: Button,
-      [Icon.name]: Icon
+      [Icon.name]: Icon,
+      [Notify.name]: Notify
     },
     data() {
       return {
         show: false,
         value: 1,
         message: '',
-        inputNum: 1
+        inputNum: 1,
+        res: '2020-2-2'
       }
     },
     methods: {
+
+      toY(val) {
+        let _this = this;
+        Notify({
+          type: 'success',
+          message: '下单成功',
+          duration: 1000,
+          onOpened() {
+            _this.$router.push({
+              path: val
+            })
+          }
+        });
+      },
+      formatDate(date) {
+        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+      },
+      onConfirm(date) {
+        this.show = false;
+        this.res = this.formatDate(date);
+      },
       goHome() {
         this.$router.push({
           path: '/home'
@@ -119,6 +142,13 @@
     .van-cell__value {
       font-size: .453rem;
     }
+    .h{
+      /deep/ .van-cell {
+        height: 1.5rem;
+        align-items: center;
+      }
+    }
+
 
     .xt {
 
@@ -201,7 +231,7 @@
     }
 
     .free-footer {
-      position: absolute;
+      position: fixed;
       width: 100%;
       height: 1.36rem;
       background-color: #fff;

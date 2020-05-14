@@ -114,7 +114,7 @@
     background-color: #eee;
 
     .home-top {
-      height: 13.8rem;
+      height: 9.8rem;
       background-color: #fff;
       display: flex;
       flex-direction: column;

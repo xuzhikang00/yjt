@@ -4,7 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
 
-export default new Router({
+const router= new Router({
   routes: [{
       path: '*',
       redirect: '/loging'
@@ -80,6 +80,33 @@ export default new Router({
       meta: {
         title: '账户设置'
       }
+    },
+    {
+      path: '/accountSetmm',
+      name: 'accountSetmm',
+      component: () => import('@/page/xgmm/index'),
+      }
+    ,
+    {
+      path: '/accountSetzf',
+      name: 'accountSetzf',
+      component: () => import('@/page/zfmm/index'),
+    },
+    {
+      path: '/accountSetbd',
+      name: 'accountSetbd',
+      component: () => import('@/page/bd/index'),
+    },
+    {
+      path: '/orderDetail',
+      name: 'orderDetail',
+      component: () => import('@/page/orderDetail/index'),
     }
   ]
 })
+router.afterEach((to,from,next)=>{
+
+　　　　window,scrollTo(0,0)
+
+　　})
+export default router;

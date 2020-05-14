@@ -1,7 +1,7 @@
 <template>
   <div class="order-manage">
     <div v-if="!ssSwitch">
-      <van-tabs v-model="active" animated title-active-color="#1aad19" sticky>
+      <van-tabs v-model="active" animated title-active-color="#1aad19" sticky v-if="!titleFont">
         <van-tab title="今日订单">
           <div class="order-manage-today-top clearfloat">
             <div class="order-manage-today-top-item">
@@ -129,7 +129,6 @@
             <ticket></ticket>
           </div>
         </van-tab>
-
         <van-tab title="全部订单">
           <div class="order-manage-today-top clearfloat">
             <div class="order-manage-today-top-item">
@@ -193,15 +192,83 @@
           </div>
         </van-tab>
       </van-tabs>
+
+      <div class="sale-manage-content" v-if="titleFont">
+        <!-- <div class="sale-manage-content-title" sticky> -->
+        <van-tabs v-model="active2" animated title-active-color="#333" sticky>
+          <van-tab :title="titleFont">
+            <div class="order-manage-today-top clearfloat">
+              <div class="order-manage-today-top-item">
+                <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s1.png" alt="">
+                <div class="order-manage-today-top-item-word">
+                  <div>到付到访金额</div>
+                  <div class="order-manage-today-top-item-word-number">¥0</div>
+                </div>
+              </div>
+              <div class="order-manage-today-top-item">
+                <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s2.png" alt="">
+                <div class="order-manage-today-top-item-word">
+                  <div>预付到访金额</div>
+                  <div class="order-manage-today-top-item-word-number">¥0</div>
+                </div>
+              </div>
+
+              <div class="order-manage-today-top-item">
+                <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s3.png" alt="">
+                <div class="order-manage-today-top-item-word">
+                  <div>预订总人数</div>
+                  <div class="order-manage-today-top-item-word-person">2人</div>
+                </div>
+              </div>
+
+              <div class="order-manage-today-top-item">
+                <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s4.png" alt="">
+                <div class="order-manage-today-top-item-word">
+                  <div>到访总人数</div>
+                  <div class="order-manage-today-top-item-word-person">0人</div>
+                </div>
+              </div>
+
+              <div class="order-manage-today-top-item order-manage-today-top-last">
+                <div class="order-manage-today-top-item-gard">(到付:1,预付:1)</div>
+              </div>
+
+              <div class="order-manage-today-top-item order-manage-today-top-last">
+                <div class="order-manage-today-top-item-gard">(到付:1,预付:1)</div>
+              </div>
+
+            </div>
+            <div class="home-sale-price" v-for="item in tableData">
+              <div class="home-sale-price-item">
+                <div>
+                  {{item.data1}}
+                </div>
+                <div class="home-sale-price-item-number">2</div>
+                <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
+              </div>
+              <div class="home-sale-price-item">
+                <div>
+                  {{item.data2}}
+                </div>
+                <div class="home-sale-price-item-number">0</div>
+                <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
+              </div>
+            </div>
+            <div class="order-manage-today-top-bottom">
+              <ticket></ticket>
+            </div>
+          </van-tab>
+        </van-tabs>
+      </div>
+
       <div class="order-manage-button">
-        <van-button type="primary" size="large" @click="ssSwitch=true">搜索</van-button>
+        <van-button type="primary" size="large" class="order-manage-button-item" @click="ssSwitch=true">搜索</van-button>
       </div>
     </div>
     <div style="padding-top: .5rem;" v-else>
       <van-cell title="开始日期" :value="startDate" @click="showS = true" />
       <van-cell title="结束日期" :value="endDate" @click="showS1 = true" />
       <van-cell title="票种" @click="showS2 = true" is-link :value="xz1" />
-      <van-cell title="渠道" @click="showS7 = true" is-link :value="xz7" />
       <van-field placeholder="请输入订单号" label="订单号" />
       <van-field placeholder="请输入票号" label="票号" />
       <van-field placeholder="请输入游客姓名" label="游客姓名" />
@@ -209,8 +276,6 @@
       <van-cell title="售票员" @click="showS3 = true" is-link :value="xz2" />
       <van-cell title="支付状态" @click="showS4 = true" is-link :value="xz3" />
       <van-cell title="售票类型" @click="showS5 = true" is-link :value="xz4" />
-      <van-cell title="打折面单人" @click="showS6 = true" is-link :value="xz5" />
-      <van-cell title="收款类型" @click="showS8 = true" is-link :value="xz6" />
       <div class="ss-button">
         <van-button class="ss-button-item" type="primary" size="large" @click="ssjgBnt()">搜索</van-button>
       </div>
@@ -327,6 +392,7 @@
     },
     data() {
       return {
+        titleFont:'',
         dates: null,
         date1: null,
         startDate: '2020-1-23',
@@ -356,6 +422,7 @@
         columns5: ['全部[票种]', '2.0收银员', 'zhou'],
         ssSwitch: false,
         active: 0,
+        active2: 0,
         tableData: [{
             data1: '预订成年联票B（含欢乐大马戏）人数',
             data2: '预订成年联票B（含欢乐大马戏）人数'
@@ -380,6 +447,10 @@
       }
     },
     methods: {
+      ssjgBnt(){
+        this.ssSwitch=false;
+        this.titleFont='搜索结果'
+      },
       goHome() {
         this.$router.push({
           path: '/home'
@@ -489,7 +560,7 @@
       margin: .5rem auto;
       .ss-button-item{
         background-color: #1aad19;
-        border-radius: 5px;
+        border-radius: .15rem;
         font-size: .48rem;
       }
     }
@@ -543,6 +614,12 @@
       z-index: 5;
       background: #fff;
       box-shadow: 0px 0px 5px rgba(0, 0, 0, .2);
+      .order-manage-button-item{
+         background-color: #1aad19;
+         font-size: .48rem;
+         border-radius: .15rem;
+         height: 1.226rem;
+      }
     }
 
     /deep/ .van-tabs__line {
@@ -635,6 +712,25 @@
 
     .order-manage-today-top-bottom {
       margin-top: .2rem;
+    }
+
+
+    .sale-manage-content {
+      background-color: #fff;
+
+      /deep/ .van-tabs__line {
+        background-color: transparent;
+      }
+
+      .sale-manage-content-title {
+        height: 1.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #555;
+        font-size: .4266rem;
+        border-bottom: 1PX solid #eee;
+      }
     }
   }
 </style>

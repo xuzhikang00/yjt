@@ -26,7 +26,8 @@
         </van-field>
     </div>
     <div class="loging-item">
-      <van-button type="default" class="loging-item-button" @click="goHome">登陆</van-button>
+      <!-- <button class="loging-item-button" @click="goHome">登陆</button> -->
+      <van-button type="default" class="loging-item-button" @click="goHome">登  陆123</van-button>
     </div>
   </div>
 </template>
@@ -71,8 +72,10 @@
       .loging-item-button{
         background-color: #ffd961;
         border-radius: .2rem;
-        width: 2.58rem;
+        width: 2.78rem;
         font-size: .48rem;
+        color: #563c03;
+        border: 1px solid #000000;
       }
     }
   }
