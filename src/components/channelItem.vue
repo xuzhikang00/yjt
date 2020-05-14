@@ -1,104 +1,231 @@
 <template>
   <div class="ticket">
-    <div class="ticket-box">
-      <div class="ticket-item ticket-item-top-word" v-for="item in top1">
-        {{item}}
-      </div>
-    </div>
-    <div class="ticket-box">
-      <div class="ticket-item ticket-item-top-word" v-for="item in top2">
-        {{item}}
-      </div>
-    </div>
-    <div v-for="item in tablea" style="margin-top: .5rem;">
-      <div class="ticket-box" >
-        <div class="ticket-item ticket-item-top-title" v-for="item1 in item.tableData1">
-          {{item1}}
+    <div style="border-bottom: 1PX solid #eee;padding-bottom: .2rem;display: flex;">
+      <div style="flex: 1;">
+        <div class="ticket-box">
+          <div class="ticket-item ticket-item-top-word" v-for="item in top1">
+            {{item}}
+          </div>
         </div>
-        <div class="ticket-item ticket-item-top-title">
-         <van-button type="danger" size="small">修改</van-button>
+        <div class="ticket-box">
+          <div class="ticket-item ticket-item-top-word" v-for="item in top2">
+            {{item}}
+          </div>
         </div>
       </div>
-      <div class="ticket-box">
-        <div class="ticket-item ticket-item-top-title" v-for="item2 in item.tableData2">
-          {{item2}}
-        </div>
-        <div class="ticket-item ticket-item-top-title">
-         <van-button type="danger" size="small">冻结</van-button>
-        </div>
+      <div class="ticket-item-top-cz">
+        管理操作
       </div>
     </div>
-    <div class="no-data">
-      没有更多数据了
+    <div style="flex: 1;overflow-y: auto;">
+      <div v-for="(item,index) in tablea" style="margin-top: .5rem;">
+        <div class="ticket-box">
+          <div class="ticket-item ticket-item-top-title" v-for="item1 in item.tableData1">
+            {{item1}}
+          </div>
+          <div class="ticket-item ticket-item-top-title">
+            <van-button type="danger" size="small" @click="xgBtn()">修改</van-button>
+          </div>
+        </div>
+        <div class="ticket-box">
+          <div class="ticket-item ticket-item-top-title" v-for="item2 in item.tableData2">
+            {{item2}}
+          </div>
+          <div class="ticket-item ticket-item-top-title">
+            <van-button type="danger" size="small" @click="djBtn(index)" v-if="item.switch">冻结</van-button>
+            <van-button type="primary" size="small" @click="jdBtn(index)" v-if="!item.switch">解冻</van-button>
+          </div>
+        </div>
+      </div>
+      <div class="no-data">
+        没有更多数据了
+      </div>
     </div>
+
 
   </div>
 </template>
 
 <script>
-  import { Button } from 'vant';
+  import {
+    Button,
+    Dialog,
+    Notify
+  } from 'vant';
   export default {
-    components:{
-      [Button.name]:Button
+    components: {
+      [Button.name]: Button,
+      [Dialog.name]: Dialog,
+      [Notify.name]: Notify
     },
     data() {
       return {
-        top1: ['姓名', '电话', '日期', '订单号', '订单数'],
-        top2: ['票型', '支付状态', '订单状态', '渠道', '到访数'],
-        tablea:[
-          {
-            tableData1:['真真',15515151,'2020-20-03',214],
-            tableData2:['随时订测试','景区到付','未使用','陈思诚']
+        top1: ['用户', '最后登录IP', '手机号', '余额(元)'],
+        top2: ['所属角色', '最后登录时间', '真实姓名', '授信额(元)'],
+        tablea: [{
+            switch: true,
+            tableData1: ['真真', 15515151, '2020-20-03', 214],
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
           },
-         {
-           tableData1:['真真',15515151,'2020-20-03',214],
-           tableData2:['随时订测试','景区到付','未使用','陈思诚']
-         },
-         {
-           tableData1:['真真',15515151,'2020-20-03',214],
-           tableData2:['随时订测试','景区到付','未使用','陈思诚']
-         },
-         {
-           tableData1:['真真',15515151,'2020-20-03',214],
-           tableData2:['随时订测试','景区到付','未使用','陈思诚']
-         }
+          {
+            switch: true,
+            tableData1: ['真真', 15515151, '2020-20-03', 214],
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
+          },
+          {
+            switch: true,
+            tableData1: ['真真', 15515151, '2020-20-03', 214],
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
+          },
+          {
+            switch: true,
+            tableData1: ['真真', 15515151, '2020-20-03', 214],
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
+          },
+          {
+            switch: true,
+            tableData1: ['真真', 15515151, '2020-20-03', 214],
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
+          },
+          {
+            switch: true,
+            tableData1: ['真真', 15515151, '2020-20-03', 214],
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
+          },
+          {
+            switch: true,
+            tableData1: ['真真', 15515151, '2020-20-03', 214],
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
+          },
+          {
+            switch: true,
+            tableData1: ['真真', 15515151, '2020-20-03', 214],
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
+          },
+          {
+            switch: true,
+            tableData1: ['真真', 15515151, '2020-20-03', 214],
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
+          },
+          {
+            switch: true,
+            tableData1: ['真真', 15515151, '2020-20-03', 214],
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
+          },
+          {
+            switch: true,
+            tableData1: ['真真', 15515151, '2020-20-03', 214],
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
+          },
+          {
+            switch: true,
+            tableData1: ['真真', 15515151, '2020-20-03', 214],
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
+          },
+          {
+            switch: true,
+            tableData1: ['真真', 15515151, '2020-20-03', 214],
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
+          },
+          {
+            switch: true,
+            tableData1: ['真真', 15515151, '2020-20-03', 214],
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
+          }
         ]
 
       }
     },
-
+    methods: {
+      xgBtn() {
+        this.$emit("xgDefine", true)
+      },
+      djBtn(index) {
+        let _this = this
+        Dialog.confirm({
+            message: '您确定要冻结该成员吗？',
+          })
+          .then(() => {
+            Notify({
+              type: 'success',
+              message: '冻结成功',
+              duration: 1000,
+              onOpened() {
+                console.log(1)
+                _this.tablea[index].switch = false
+              }
+            });
+          })
+          .catch(() => {
+            // on cancel
+          });
+      },
+      jdBtn(index) {
+        let _this = this
+        Dialog.confirm({
+            message: '您确定要解冻该成员吗？',
+          })
+          .then(() => {
+            Notify({
+              type: 'success',
+              message: '解冻成功',
+              duration: 1000,
+              onOpened() {
+                console.log(1)
+                _this.tablea[index].switch = true
+              }
+            });
+          })
+          .catch(() => {
+            // on cancel
+          });
+      }
+    }
   }
 </script>
 
 <style lang="less" scoped>
   .ticket {
     background-color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .ticket-item-top-cz {
+      color: #999999;
+      width: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     .ticket-box {
       display: flex;
 
       .ticket-item-top-word {
         color: #999999;
-        font-size: .426rem;
         text-align: center;
-        height: .9866rem;
-        line-height: .9866rem;
+        height: .8rem;
+        line-height: .8rem;
       }
+
       .ticket-item-top-title {
         color: #333333;
-        font-size: .346rem;
-        text-align: center;
         margin-top: .2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
+
       .ticket-item {
         flex: 1;
       }
     }
-    .no-data{
-      font-size: .346rem;
+
+    .no-data {
       color: #666666;
       text-align: center;
-      padding: 2rem 0;
+      padding: 1rem 0 2.2rem 0;
     }
   }
 </style>

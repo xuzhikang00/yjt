@@ -6,22 +6,25 @@
       </div>
       <div class="home-user">
         <img class="home-user-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/touxiang.jpg" alt="">
-        <div class="home-user-title">153548544</div>
+        <div class="home-user-title">
+          <van-icon name="passed" class="home-user-title-icon" />
+          153548544
+          </div>
       </div>
       <div class="home-sale-price">
         <div class="home-sale-price-item">
-          <div>
-            <van-icon name="chat-o" color="#1989fa" />
+          <div style="display: flex;align-items: center;justify-content: center;">
+            <van-icon class="iconfont" class-prefix='icon' name='ziyuan' color="#639eff" size=".586rem" style="margin-right: .1rem;"  />
             总购票人数
           </div>
-          <div>12312</div>
+          <div style="font-size: .4rem;" >12312</div>
         </div>
         <div class="home-sale-price-item">
-          <div>
-            <van-icon name="chat-o" color="#1989fa" />
+          <div style="display: flex;align-items: center;justify-content: center;">
+            <van-icon name="gold-coin" color="#f7ab07" size=".586rem" style="margin-right: .1rem;" />
             总售票金额
           </div>
-          <div>¥15196.21</div>
+          <div style="font-size: .4rem;">¥15196.21</div>
         </div>
       </div>
     </div>
@@ -137,8 +140,16 @@
         }
 
         .home-user-title {
-          margin-top: .32rem;
+          margin-top: .52rem;
           font-size: .42rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .home-user-title-icon{
+            font-size: .52rem;
+            color: #1aad19;
+            margin-right: .12rem;
+          }
         }
       }
 

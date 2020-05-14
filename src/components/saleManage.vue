@@ -1,6 +1,6 @@
 <template>
   <div class="ticket">
-    <div class="ticket-box">
+    <div class="ticket-box" style="border-bottom: 1PX solid #eee;padding: .2rem 0;">
       <div class="ticket-item-top-kong"></div>
       <div class="ticket-item ticket-item-top-word" v-for="item in top1">
         {{item}}
@@ -22,9 +22,7 @@
       </div>
     </div>
 
-    <div class="no-data">
-      没有更多数据了
-    </div>
+
 
   </div>
 </template>
@@ -35,7 +33,17 @@
       return {
         top1: ['原价', '打折', '渠道', '免单', '小计'],
         tablea: [{
-            address: '成年联票B（含欢乐大马戏）',
+            address: '现金支付',
+            tableData1: ['300人', '300人', '300人', '300人', '300人'],
+            tableData2: ['300人', '300人', '300人', '300人', '300人']
+          },
+          {
+            address: '现金支付',
+            tableData1: ['300人', '300人', '300人', '300人', '300人'],
+            tableData2: ['300人', '300人', '300人', '300人', '300人']
+          },
+          {
+            address: '现金支付',
             tableData1: ['300人', '300人', '300人', '300人', '300人'],
             tableData2: ['300人', '300人', '300人', '300人', '300人']
           },
@@ -50,7 +58,17 @@
             tableData2: ['300人', '300人', '300人', '300人', '300人']
           },
           {
-            address: '成年联票B（含欢乐大马戏）',
+            address: '现金支付',
+            tableData1: ['300人', '300人', '300人', '300人', '300人'],
+            tableData2: ['300人', '300人', '300人', '300人', '300人']
+          },
+          {
+            address: '现金支付',
+            tableData1: ['300人', '300人', '300人', '300人', '300人'],
+            tableData2: ['300人', '300人', '300人', '300人', '300人']
+          },
+          {
+            address: '现金支付',
             tableData1: ['300人', '300人', '300人', '300人', '300人'],
             tableData2: ['300人', '300人', '300人', '300人', '300人']
           }
@@ -65,6 +83,10 @@
 <style lang="less" scoped>
   .ticket-item-top-kong {
     width: 1.5rem;
+    line-height: .7rem;
+    padding-left: .2rem;
+    font-size: .373rem;
+    text-align: center;
   }
 
   .ticket {

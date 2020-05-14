@@ -4,7 +4,12 @@
       免费票快速下单
     </div>
     <van-cell-group>
-      <van-cell title="出游日期" @click="show=!show" icon="location-o" is-link />
+      <van-cell title="出游日期" @click="show=!show" value="2010-02-23" icon="location-o" is-link>
+        <template #icon>
+          <van-icon class="iconfont" color="#10aeff" size=".533rem" style="margin-right: .3rem;" class-prefix='icon'
+            name="rili" />
+        </template>
+      </van-cell>
     </van-cell-group>
     <div class="free-piao">
       <div class="free-piao-title">
@@ -12,13 +17,18 @@
       </div>
       <div class="free-piao-font">选择张数</div>
       <div class="free-piao-font-ste">
-        <van-stepper v-model="value" />
+        <div :class="inputNum<=0?'free-piao-font-ste-box free-piao-font-ste-box-g':'free-piao-font-ste-box-a free-piao-font-ste-box'"
+          @click="jian()">-</div>
+        <div class="free-piao-font-ste-box">
+          <input type="text" v-model="inputNum">
+        </div>
+        <div class="free-piao-font-ste-box free-piao-font-ste-box-a" @click="jia">+</div>
       </div>
     </div>
     <van-cell-group class="free-bottom">
       <van-field label="购票人电话" placeholder="请输入电话" />
     </van-cell-group>
-    <van-field v-model="message" rows="2" autosize label="备注(选填)" type="textarea" maxlength="50" placeholder="请输入内容"
+    <van-field class="xt" v-model="message" rows="2" autosize label="备注(选填)" type="textarea" maxlength="50" placeholder="请输入内容"
       show-word-limit />
     <van-calendar v-model="show" type="range" />
     <div class="free-footer">
@@ -36,7 +46,6 @@
     Cell,
     CellGroup,
     Field,
-    Stepper,
     Button,
     Icon
   } from 'vant';
@@ -46,7 +55,6 @@
       [Cell.name]: Cell,
       [CellGroup.name]: CellGroup,
       [Field.name]: Field,
-      [Stepper.name]: Stepper,
       [Button.name]: Button,
       [Icon.name]: Icon
     },
@@ -54,12 +62,24 @@
       return {
         show: false,
         value: 1,
-        message: ''
+        message: '',
+        inputNum: 1
       }
     },
-    methods:{
-      goHome(){
-        this.$router.push({path:'/home'})
+    methods: {
+      goHome() {
+        this.$router.push({
+          path: '/home'
+        })
+      },
+      jian() {
+        if (this.inputNum <= 0) {
+          return
+        }
+        this.inputNum--
+      },
+      jia() {
+        this.inputNum++
       }
     }
   }
@@ -71,8 +91,46 @@
     height: 100%;
     position: relative;
 
+    /deep/ input::-webkit-input-placeholder {
+      /* WebKit browsers */
+      font-size: .4533rem;
+    }
+
+    /deep/ input:-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      font-size: .4533rem;
+    }
+
+    /deep/ input::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      font-size: .4533rem;
+    }
+
+    /deep/ input:-ms-input-placeholder {
+      /* Internet Explorer 10+ */
+      font-size: .4533rem;
+    }
+
+    /deep/ textarea {
+      font-size: .4533rem;
+    }
+
+    /deep/ .van-cell__title,
+    .van-cell__value {
+      font-size: .453rem;
+    }
+
+    .xt {
+
+      /deep/ .van-cell__title,
+      .van-cell__value {
+        font-size: .453rem;
+        color: #969799;
+      }
+    }
+
     .free-bottom {
-      margin-bottom: .7rem;
+      margin-bottom: .5rem;
     }
 
     .free-title {
@@ -89,7 +147,7 @@
     .free-piao {
       height: 4.88rem;
       border-radius: .2rem;
-      margin: .7rem auto;
+      margin: 0.5rem auto 1.2rem auto;
       background-color: #fff;
       width: 90%;
 
@@ -103,12 +161,42 @@
 
       .free-piao-font {
         color: #919191;
-        font-size: .426rem;
+        font-size: .4265rem;
         padding: .4rem;
       }
 
       .free-piao-font-ste {
-        text-align: center;
+        display: flex;
+        justify-content: center;
+
+        .free-piao-font-ste-box-g {
+          background-color: #c8c8c8;
+          color: #fff;
+        }
+
+        .free-piao-font-ste-box-a {
+          background-color: #1aad19;
+          color: #fff;
+        }
+
+        .free-piao-font-ste-box {
+          margin-right: .3rem;
+          border: 1PX solid #eee;
+          border-radius: .1rem;
+          height: 1.2rem;
+          width: 1.3333rem;
+          font-size: .8rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          input {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: .5333rem;
+          }
+        }
       }
     }
 
@@ -122,8 +210,10 @@
       justify-content: flex-end;
 
       .free-footer-button {
-        height: 100%;
-        padding: 0 1rem;
+        background-color: #1aad19;
+        width: 2.986rem;
+        height: 1.333rem;
+        font-size: .42666rem;
       }
     }
 
@@ -138,8 +228,10 @@
       position: fixed;
       bottom: 4rem;
       left: .4rem;
-      .free-home-icon{
-        font-size: .64rem;
+      border-radius: 3px;
+
+      .free-home-icon {
+        font-size: .54rem;
       }
     }
   }

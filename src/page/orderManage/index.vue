@@ -1,203 +1,299 @@
 <template>
   <div class="order-manage">
-    <van-tabs v-model="active" animated title-active-color="#1aad19">
-      <van-tab title="今日订单">
-        <div class="order-manage-today-top clearfloat">
-          <div class="order-manage-today-top-item">
-            <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s1.png" alt="">
-            <div class="order-manage-today-top-item-word">
-              <div>到付到访金额</div>
-              <div class="order-manage-today-top-item-word-number">¥0</div>
+    <div v-if="!ssSwitch">
+      <van-tabs v-model="active" animated title-active-color="#1aad19" sticky>
+        <van-tab title="今日订单">
+          <div class="order-manage-today-top clearfloat">
+            <div class="order-manage-today-top-item">
+              <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s1.png" alt="">
+              <div class="order-manage-today-top-item-word">
+                <div>到付到访金额</div>
+                <div class="order-manage-today-top-item-word-number">¥0</div>
+              </div>
+            </div>
+            <div class="order-manage-today-top-item">
+              <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s2.png" alt="">
+              <div class="order-manage-today-top-item-word">
+                <div>预付到访金额</div>
+                <div class="order-manage-today-top-item-word-number">¥0</div>
+              </div>
+            </div>
+
+            <div class="order-manage-today-top-item">
+              <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s3.png" alt="">
+              <div class="order-manage-today-top-item-word">
+                <div>预订总人数</div>
+                <div class="order-manage-today-top-item-word-person">2人</div>
+              </div>
+            </div>
+
+            <div class="order-manage-today-top-item">
+              <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s4.png" alt="">
+              <div class="order-manage-today-top-item-word">
+                <div>到访总人数</div>
+                <div class="order-manage-today-top-item-word-person">0人</div>
+              </div>
+            </div>
+
+            <div class="order-manage-today-top-item order-manage-today-top-last">
+              <div class="order-manage-today-top-item-gard">(到付:1,预付:1)</div>
+            </div>
+
+            <div class="order-manage-today-top-item order-manage-today-top-last">
+              <div class="order-manage-today-top-item-gard">(到付:1,预付:1)</div>
+            </div>
+
+          </div>
+          <div class="home-sale-price">
+            <div class="home-sale-price-item">
+              <div>
+                预订随时订测试票人数
+              </div>
+              <div class="home-sale-price-item-number">2</div>
+              <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
+            </div>
+            <div class="home-sale-price-item">
+              <div>
+                到访随时订测试票人数
+              </div>
+              <div class="home-sale-price-item-number">0</div>
+              <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
             </div>
           </div>
-          <div class="order-manage-today-top-item">
-            <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s2.png" alt="">
-            <div class="order-manage-today-top-item-word">
-              <div>预付到访金额</div>
-              <div class="order-manage-today-top-item-word-number">¥0</div>
+          <div class="order-manage-today-top-bottom">
+            <ticket></ticket>
+          </div>
+        </van-tab>
+        <van-tab title="明日订单">
+          <div class="order-manage-today-top clearfloat">
+            <div class="order-manage-today-top-item">
+              <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s3.png" alt="">
+              <div class="order-manage-today-top-item-word">
+                <div>预订总人数</div>
+                <div class="order-manage-today-top-item-word-person">2人</div>
+              </div>
+            </div>
+
+            <div class="order-manage-today-top-item">
+              <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s4.png" alt="">
+              <div class="order-manage-today-top-item-word">
+                <div>到访总人数</div>
+                <div class="order-manage-today-top-item-word-person">0人</div>
+              </div>
+            </div>
+
+            <div class="order-manage-today-top-item order-manage-today-top-last">
+              <div class="order-manage-today-top-item-gard">(到付:1,预付:1)</div>
+            </div>
+
+            <div class="order-manage-today-top-item order-manage-today-top-last">
+              <div class="order-manage-today-top-item-gard">(到付:1,预付:1)</div>
+            </div>
+
+          </div>
+          <div class="home-sale-price">
+            <div class="home-sale-price-item">
+              <div>
+                预订随时订测试票人数
+              </div>
+              <div class="home-sale-price-item-number">2</div>
+              <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
+            </div>
+            <div class="home-sale-price-item">
+              <div>
+                到访随时订测试票人数
+              </div>
+              <div class="home-sale-price-item-number">0</div>
+              <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
             </div>
           </div>
 
-          <div class="order-manage-today-top-item">
-            <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s3.png" alt="">
-            <div class="order-manage-today-top-item-word">
-              <div>预订总人数</div>
-              <div class="order-manage-today-top-item-word-person">2人</div>
+          <div class="home-sale-price">
+            <div class="home-sale-price-item">
+              <div>
+                预订盐城成人体验票人数
+              </div>
+              <div class="home-sale-price-item-number">2</div>
+              <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
+            </div>
+            <div class="home-sale-price-item">
+              <div>
+                到访盐城成人体验票人数
+              </div>
+              <div class="home-sale-price-item-number">0</div>
+              <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
             </div>
           </div>
 
-          <div class="order-manage-today-top-item">
-            <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s4.png" alt="">
-            <div class="order-manage-today-top-item-word">
-              <div>到访总人数</div>
-              <div class="order-manage-today-top-item-word-person">0人</div>
+          <div class="order-manage-today-top-bottom">
+            <ticket></ticket>
+          </div>
+        </van-tab>
+
+        <van-tab title="全部订单">
+          <div class="order-manage-today-top clearfloat">
+            <div class="order-manage-today-top-item">
+              <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s1.png" alt="">
+              <div class="order-manage-today-top-item-word">
+                <div>到付到访金额</div>
+                <div class="order-manage-today-top-item-word-number">¥0</div>
+              </div>
+            </div>
+            <div class="order-manage-today-top-item">
+              <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s2.png" alt="">
+              <div class="order-manage-today-top-item-word">
+                <div>预付到访金额</div>
+                <div class="order-manage-today-top-item-word-number">¥0</div>
+              </div>
+            </div>
+
+            <div class="order-manage-today-top-item">
+              <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s3.png" alt="">
+              <div class="order-manage-today-top-item-word">
+                <div>预订总人数</div>
+                <div class="order-manage-today-top-item-word-person">2人</div>
+              </div>
+            </div>
+
+            <div class="order-manage-today-top-item">
+              <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s4.png" alt="">
+              <div class="order-manage-today-top-item-word">
+                <div>到访总人数</div>
+                <div class="order-manage-today-top-item-word-person">0人</div>
+              </div>
+            </div>
+
+            <div class="order-manage-today-top-item order-manage-today-top-last">
+              <div class="order-manage-today-top-item-gard">(到付:1,预付:1)</div>
+            </div>
+
+            <div class="order-manage-today-top-item order-manage-today-top-last">
+              <div class="order-manage-today-top-item-gard">(到付:1,预付:1)</div>
+            </div>
+
+          </div>
+          <div class="home-sale-price" v-for="item in tableData">
+            <div class="home-sale-price-item">
+              <div>
+                {{item.data1}}
+              </div>
+              <div class="home-sale-price-item-number">2</div>
+              <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
+            </div>
+            <div class="home-sale-price-item">
+              <div>
+                {{item.data2}}
+              </div>
+              <div class="home-sale-price-item-number">0</div>
+              <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
             </div>
           </div>
-
-          <div class="order-manage-today-top-item order-manage-today-top-last">
-            <div class="order-manage-today-top-item-gard">(到付:1,预付:1)</div>
+          <div class="order-manage-today-top-bottom">
+            <ticket></ticket>
           </div>
-
-          <div class="order-manage-today-top-item order-manage-today-top-last">
-            <div class="order-manage-today-top-item-gard">(到付:1,预付:1)</div>
-          </div>
-
-        </div>
-        <div class="home-sale-price">
-          <div class="home-sale-price-item">
-            <div>
-              预订随时订测试票人数
-            </div>
-            <div class="home-sale-price-item-number">2</div>
-            <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
-          </div>
-          <div class="home-sale-price-item">
-            <div>
-              到访随时订测试票人数
-            </div>
-            <div class="home-sale-price-item-number">0</div>
-            <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
-          </div>
-        </div>
-        <div class="order-manage-today-top-bottom">
-          <ticket></ticket>
-        </div>
-      </van-tab>
-      <van-tab title="明日订单">
-        <div class="order-manage-today-top clearfloat">
-          <div class="order-manage-today-top-item">
-            <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s3.png" alt="">
-            <div class="order-manage-today-top-item-word">
-              <div>预订总人数</div>
-              <div class="order-manage-today-top-item-word-person">2人</div>
-            </div>
-          </div>
-
-          <div class="order-manage-today-top-item">
-            <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s4.png" alt="">
-            <div class="order-manage-today-top-item-word">
-              <div>到访总人数</div>
-              <div class="order-manage-today-top-item-word-person">0人</div>
-            </div>
-          </div>
-
-          <div class="order-manage-today-top-item order-manage-today-top-last">
-            <div class="order-manage-today-top-item-gard">(到付:1,预付:1)</div>
-          </div>
-
-          <div class="order-manage-today-top-item order-manage-today-top-last">
-            <div class="order-manage-today-top-item-gard">(到付:1,预付:1)</div>
-          </div>
-
-        </div>
-        <div class="home-sale-price">
-          <div class="home-sale-price-item">
-            <div>
-              预订随时订测试票人数
-            </div>
-            <div class="home-sale-price-item-number">2</div>
-            <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
-          </div>
-          <div class="home-sale-price-item">
-            <div>
-              到访随时订测试票人数
-            </div>
-            <div class="home-sale-price-item-number">0</div>
-            <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
-          </div>
-        </div>
-
-        <div class="home-sale-price">
-          <div class="home-sale-price-item">
-            <div>
-              预订盐城成人体验票人数
-            </div>
-            <div class="home-sale-price-item-number">2</div>
-            <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
-          </div>
-          <div class="home-sale-price-item">
-            <div>
-              到访盐城成人体验票人数
-            </div>
-            <div class="home-sale-price-item-number">0</div>
-            <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
-          </div>
-        </div>
-
-        <div class="order-manage-today-top-bottom">
-          <ticket></ticket>
-        </div>
-      </van-tab>
-
-      <van-tab title="全部订单">
-        <div class="order-manage-today-top clearfloat">
-          <div class="order-manage-today-top-item">
-            <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s1.png" alt="">
-            <div class="order-manage-today-top-item-word">
-              <div>到付到访金额</div>
-              <div class="order-manage-today-top-item-word-number">¥0</div>
-            </div>
-          </div>
-          <div class="order-manage-today-top-item">
-            <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s2.png" alt="">
-            <div class="order-manage-today-top-item-word">
-              <div>预付到访金额</div>
-              <div class="order-manage-today-top-item-word-number">¥0</div>
-            </div>
-          </div>
-
-          <div class="order-manage-today-top-item">
-            <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s3.png" alt="">
-            <div class="order-manage-today-top-item-word">
-              <div>预订总人数</div>
-              <div class="order-manage-today-top-item-word-person">2人</div>
-            </div>
-          </div>
-
-          <div class="order-manage-today-top-item">
-            <img src="http://zlpl2.1230t.com/v1/wap_admin/images/s4.png" alt="">
-            <div class="order-manage-today-top-item-word">
-              <div>到访总人数</div>
-              <div class="order-manage-today-top-item-word-person">0人</div>
-            </div>
-          </div>
-
-          <div class="order-manage-today-top-item order-manage-today-top-last">
-            <div class="order-manage-today-top-item-gard">(到付:1,预付:1)</div>
-          </div>
-
-          <div class="order-manage-today-top-item order-manage-today-top-last">
-            <div class="order-manage-today-top-item-gard">(到付:1,预付:1)</div>
-          </div>
-
-        </div>
-        <div class="home-sale-price" v-for="item in tableData">
-          <div class="home-sale-price-item">
-            <div>
-              {{item.data1}}
-            </div>
-            <div class="home-sale-price-item-number">2</div>
-            <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
-          </div>
-          <div class="home-sale-price-item">
-            <div>
-               {{item.data2}}
-            </div>
-            <div class="home-sale-price-item-number">0</div>
-            <div class="home-sale-price-item-word">(到付:1,预付:1)</div>
-          </div>
-        </div>
-        <div class="order-manage-today-top-bottom">
-          <ticket></ticket>
-        </div>
-      </van-tab>
-    </van-tabs>
-    <div class="order-manage-button">
-      <van-button type="primary" size="large">搜素</van-button>
+        </van-tab>
+      </van-tabs>
+      <div class="order-manage-button">
+        <van-button type="primary" size="large" @click="ssSwitch=true">搜索</van-button>
+      </div>
+    </div>
+    <div style="padding-top: .5rem;" v-else>
+      <van-cell title="开始日期" :value="startDate" @click="showS = true" />
+      <van-cell title="结束日期" :value="endDate" @click="showS1 = true" />
+      <van-cell title="票种" @click="showS2 = true" is-link :value="xz1" />
+      <van-cell title="渠道" @click="showS7 = true" is-link :value="xz7" />
+      <van-field placeholder="请输入订单号" label="订单号" />
+      <van-field placeholder="请输入票号" label="票号" />
+      <van-field placeholder="请输入游客姓名" label="游客姓名" />
+      <van-field placeholder="请输入游客电话" label="游客电话" />
+      <van-cell title="售票员" @click="showS3 = true" is-link :value="xz2" />
+      <van-cell title="支付状态" @click="showS4 = true" is-link :value="xz3" />
+      <van-cell title="售票类型" @click="showS5 = true" is-link :value="xz4" />
+      <van-cell title="打折面单人" @click="showS6 = true" is-link :value="xz5" />
+      <van-cell title="收款类型" @click="showS8 = true" is-link :value="xz6" />
+      <div class="ss-button">
+        <van-button class="ss-button-item" type="primary" size="large" @click="ssjgBnt()">搜索</van-button>
+      </div>
     </div>
     <div class="free-home" @click="goHome">
       <van-icon class="free-home-icon" name="wap-home-o" />
     </div>
+    <van-popup v-model="showS" position="bottom">
+      <van-datetime-picker @change="changeShowS" @confirm="closeBtn" cancel="closeBtn" v-model="dates" type="date" title="开始日期" />
+    </van-popup>
+    <van-popup v-model="showS1" position="bottom">
+      <van-datetime-picker @change="changeShowS1"  @confirm="closeBtn" cancel="closeBtn" v-model="date1" type="date" title="开始日期" />
+    </van-popup>
+    <van-popup v-model="showS2" position="bottom">
+      <van-picker
+        title="选择票种"
+        show-toolbar
+        :columns="columns"
+        @confirm="onConfirm"
+        @cancel="onCancel"
+        @change="onChange"
+      />
+    </van-popup>
+    <van-popup v-model="showS7" position="bottom">
+      <van-picker
+        title="选择渠道"
+        show-toolbar
+        :columns="columns0"
+        @confirm="onConfirm7"
+        @cancel="onCancel7"
+        @change="onChange7"
+      />
+    </van-popup>
+    <van-popup v-model="showS3" position="bottom">
+      <van-picker
+        title="售票员"
+        show-toolbar
+        :columns="columns5"
+        @confirm="onConfirm3"
+        @cancel="onCancel3"
+        @change="onChange3"
+      />
+    </van-popup>
+    <van-popup v-model="showS4" position="bottom">
+      <van-picker
+        title="支付状态"
+        show-toolbar
+        :columns="columns1"
+        @confirm="onConfirm4"
+        @cancel="onCancel4"
+        @change="onChange4"
+      />
+    </van-popup>
+    <van-popup v-model="showS5" position="bottom">
+      <van-picker
+        title="售票类型"
+        show-toolbar
+        :columns="columns2"
+        @confirm="onConfirm5"
+        @cancel="onCancel5"
+        @change="onChange5"
+      />
+    </van-popup>
+    <van-popup v-model="showS6" position="bottom">
+      <van-picker
+        title="打折面单人"
+        show-toolbar
+        :columns="columns3"
+        @confirm="onConfirm6"
+        @cancel="onCancel6"
+        @change="onChange6"
+      />
+    </van-popup>
+    <van-popup v-model="showS8" position="bottom">
+      <van-picker
+        title="收款类型"
+        show-toolbar
+        :columns="columns4"
+        @confirm="onConfirm8"
+        @cancel="onCancel8"
+        @change="onChange8"
+      />
+    </van-popup>
   </div>
 </template>
 
@@ -206,7 +302,13 @@
     Tab,
     Tabs,
     Button,
-    Icon
+    Icon,
+    Popup,
+    Calendar,
+    Cell,
+    DatetimePicker,
+    Picker,
+    Field
   } from 'vant';
   import ticket from '@/components/ticketManage.vue';
   export default {
@@ -215,24 +317,156 @@
       [Tabs.name]: Tabs,
       [Button.name]: Button,
       [Icon.name]: Icon,
-      ticket
+      ticket,
+      [Popup.name]: Popup,
+      [Calendar.name]: Calendar,
+      [Cell.name]: Cell,
+      [DatetimePicker.name]: DatetimePicker,
+      [Picker.name]: Picker,
+      [Field.name]: Field
     },
     data() {
       return {
+        dates: null,
+        date1: null,
+        startDate: '2020-1-23',
+        endDate: '2020-5-23',
+        showS: false,
+        showS1: false,
+        showS2: false,
+        showS3: false,
+        showS4: false,
+        showS5: false,
+        showS6: false,
+        showS7: false,
+        showS8: false,
+        xz1: '全部[票种]',
+        xz2: '不限',
+        xz3: '不限',
+        xz4: '不限',
+        xz5: '不限',
+        xz6: '不限',
+        xz7: '全部[渠道]',
+        columns: ['不限', '成人票', '项目2'],
+        columns0: ['全部[渠道]', '官网', '欢乐旅行社'],
+        columns1: ['不限', '景区代收', '提前预付'],
+        columns2: ['不限', '原价', '打折'],
+        columns3: ['不限', '脱单', '1折'],
+        columns4: ['不限', '现金支付', '刷卡支付', '微信支付'],
+        columns5: ['全部[票种]', '2.0收银员', 'zhou'],
+        ssSwitch: false,
         active: 0,
-        tableData:[
-          {data1:'预订成年联票B（含欢乐大马戏）人数',data2:'预订成年联票B（含欢乐大马戏）人数'},
-          {data1:'到访成年联票B（含欢乐大马戏）人数',data2:'到访成年联票B（含欢乐大马戏）人数'},
-          {data1:'预约成人票数',data2:'预约成人票数'},
-          {data1:'预约成人票数',data2:'预约成人票数'},
-          {data1:'预约成人票数',data2:'预约成人票数'}
+        tableData: [{
+            data1: '预订成年联票B（含欢乐大马戏）人数',
+            data2: '预订成年联票B（含欢乐大马戏）人数'
+          },
+          {
+            data1: '到访成年联票B（含欢乐大马戏）人数',
+            data2: '到访成年联票B（含欢乐大马戏）人数'
+          },
+          {
+            data1: '预约成人票数',
+            data2: '预约成人票数'
+          },
+          {
+            data1: '预约成人票数',
+            data2: '预约成人票数'
+          },
+          {
+            data1: '预约成人票数',
+            data2: '预约成人票数'
+          }
         ]
       }
     },
-    methods:{
-      goHome(){
-        this.$router.push({path:'/home'})
-      }
+    methods: {
+      goHome() {
+        this.$router.push({
+          path: '/home'
+        })
+      },
+      onConfirm(value, index) {
+        this.xz1 = value
+        this.showS2 = false
+      },
+      onChange(picker, value, index) {},
+      onCancel() {
+        this.showS1 = false
+      },
+
+      onConfirm7(value, index) {
+        this.xz7 = value
+        this.showS7 = false
+      },
+      onChange7(picker, value, index) {},
+      onCancel7() {
+        this.showS7 = false
+      },
+
+
+      onConfirm3(value, index) {
+        this.xz2 = value
+        this.showS3 = false
+      },
+      onChange3(picker, value, index) {},
+      onCancel3() {
+        this.showS3 = false
+      },
+
+
+      onConfirm4(value, index) {
+        this.xz3 = value
+        this.showS4 = false
+      },
+      onChange4(picker, value, index) {},
+      onCancel4() {
+        this.showS4 = false
+      },
+
+      onConfirm5(value, index) {
+        this.xz4 = value
+        this.showS5 = false
+      },
+      onChange5(picker, value, index) {},
+      onCancel5() {
+        this.showS5 = false
+      },
+
+      onConfirm6(value, index) {
+        this.xz5 = value
+        this.showS6 = false
+      },
+      onChange6(picker, value, index) {},
+      onCancel6() {
+        this.showS5 = false
+      },
+
+      onConfirm8(value, index) {
+        this.xz6 = value
+        this.showS8 = false
+      },
+      onChange8(picker, value, index) {},
+      onCancel8() {
+        this.showS7 = false
+      },
+
+    changeShowS() {
+      let data = new Date(this.dates)
+      this.startDate=`${data.getFullYear()}-${data.getMonth()+1}-${data.getDay()}`
+    },
+    changeShowS1() {
+      let data = new Date(this.date1)
+      this.endDate=`${data.getFullYear()}-${data.getMonth()+1}-${data.getDay()}`
+    },
+    getName(val) {
+      this.titleFont = val;
+      this.show = false
+      console.log(this.titleFont)
+    },
+    closeBtn(){
+      this.showS = false
+      this.showS1 = false
+    },
     }
   }
 </script>
@@ -250,6 +484,38 @@
     height: 100%;
     background-color: #eee;
     position: relative;
+    .ss-button{
+      width: 90%;
+      margin: .5rem auto;
+      .ss-button-item{
+        background-color: #1aad19;
+        border-radius: 5px;
+        font-size: .48rem;
+      }
+    }
+    /deep/ .van-cell__title,.van-cell__value{
+      font-size: .4533rem;
+      color: #333333;
+    }
+    /deep/ input::-webkit-input-placeholder {
+      /* WebKit browsers */
+      font-size: .4533rem;
+    }
+
+    /deep/ input:-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      font-size: .4533rem;
+    }
+
+    /deep/ input::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      font-size: .4533rem;
+    }
+
+    /deep/ input:-ms-input-placeholder {
+      /* Internet Explorer 10+ */
+      font-size: .4533rem;
+    }
     .free-home {
       background: rgba(73, 225, 50, 0.5);
       width: 1.06rem;
@@ -261,10 +527,13 @@
       position: fixed;
       bottom: 4rem;
       left: .4rem;
-      .free-home-icon{
-        font-size: .64rem;
+      border-radius: 3PX;
+
+      .free-home-icon {
+        font-size: .54rem;
       }
     }
+
     .order-manage-button {
       position: fixed;
       bottom: 0;
@@ -293,6 +562,7 @@
         justify-content: center;
         padding: .5rem 0 0 0;
         float: left;
+        align-items: center;
 
         .order-manage-today-top-item-gard {
           color: #999999;
@@ -310,11 +580,13 @@
 
           .order-manage-today-top-item-word-number {
             font-size: .426rem;
+            margin-top: .2rem;
           }
 
           .order-manage-today-top-item-word-person {
             font-size: .426rem;
             color: #ff5346;
+            margin-top: .2rem;
           }
         }
       }
@@ -324,15 +596,14 @@
       background-color: #fff;
       height: 2.13rem;
       text-align: center;
-      padding: .45rem 0 .24rem 0;
+      padding: .45rem 0 .45rem 0;
       font-size: 0.4rem;
       width: 100%;
       border-top: 2PX solid #feafb3;
       display: flex;
       box-sizing: content-box;
       width: 98%;
-      margin: 0 auto;
-      margin-top: .2rem;
+      margin: .1rem auto;
 
       .home-sale-price-item {
         flex: 1;
@@ -341,14 +612,18 @@
         display: flex;
         justify-content: space-between;
         flex-direction: column;
+        padding: 0 .1rem;
 
         &:last-child {
           border-radius: none;
         }
 
         .home-sale-price-item-number {
-          color: #1aada9;
+          color: #1AAD19;
           font-size: .48rem;
+          height: .8rem;
+          line-height: .8rem;
+          font-weight: bolder;
         }
 
         .home-sale-price-item-word {

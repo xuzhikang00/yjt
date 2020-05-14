@@ -1,24 +1,29 @@
 <template>
   <div class="loging">
     <div class="loging-logo">
-      <img src="../../../static/images/loging-logo.jpg" alt="">
+      <img src="../../../static/images/login_logo.png" alt="">
     </div>
     <div class="loging-word">
-      <img src="../../../static/images/loging-word.jpg" alt="">
+      <img src="../../../static/images/txt.png" alt="">
     </div>
     <div class="loging-item">
        <van-field
           clearable
-          left-icon="manager"
-          placeholder="显示清除图标"
-        />
+          placeholder="请输入用户名">
+        <template #left-icon>
+          <van-icon color="#00c5cc" size=".533rem" style="margin-right: .3rem;" name="manager" />
+        </template></van-field>
     </div>
     <div class="loging-item">
        <van-field
           clearable
-          left-icon="warning"
-          placeholder="显示清除图标"
-        />
+          type="password"
+          placeholder="请输入密码"
+        >
+        <template #left-icon>
+          <van-icon class="iconfont" color="#00c5cc" size=".533rem" style="margin-right: .3rem;" class-prefix='icon' name="key-fill" />
+        </template>
+        </van-field>
     </div>
     <div class="loging-item">
       <van-button type="default" class="loging-item-button" @click="goHome">登陆</van-button>
@@ -27,11 +32,12 @@
 </template>
 
 <script>
-  import { Field,Button } from 'vant';
+  import { Field,Button,Icon } from 'vant';
   export default{
     components:{
       [Field.name]:Field,
-      [Button.name]:Button
+      [Button.name]:Button,
+      [Icon.name]:Icon
     },
     methods:{
       goHome(){

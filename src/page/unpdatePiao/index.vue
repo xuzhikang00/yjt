@@ -16,16 +16,22 @@
 </template>
 
 <script>
-  import { Field,Button,Icon } from 'vant';
-  export default{
-    components:{
-      [Field.name]:Field,
-      [Button.name]:Button,
-      [Icon.name]:Icon
+  import {
+    Field,
+    Button,
+    Icon
+  } from 'vant';
+  export default {
+    components: {
+      [Field.name]: Field,
+      [Button.name]: Button,
+      [Icon.name]: Icon
     },
-    methods:{
-      goHome(){
-        this.$router.push({path:'/home'})
+    methods: {
+      goHome() {
+        this.$router.push({
+          path: '/home'
+        })
       }
     }
   }
@@ -40,6 +46,7 @@
     background-repeat: no-repeat;
     position: relative;
     background-size: contain;
+
     .free-home {
       background: rgba(73, 225, 50, 0.5);
       width: 1.06rem;
@@ -51,12 +58,16 @@
       position: fixed;
       bottom: 4rem;
       left: .4rem;
-      .free-home-icon{
-        font-size: .64rem;
+      border-radius: 3PX;
+
+      .free-home-icon {
+        font-size: .54rem;
       }
     }
+
     .unpdate_bg {
-      background-color: rgba(224, 235, 244, .9);
+      background-color: rgb(224, 235, 244);
+      opacity: .9;
       position: fixed;
       top: 0;
       bottom: 0;
@@ -66,31 +77,49 @@
       .unpdate_logo {
         width: 30%;
         margin: .5rem auto;
-        img{
+
+        img {
           width: 100%;
         }
       }
 
       .unpdate_input {
-        border: 1PX solid #eee;
         height: 1.28rem;
         width: 80%;
         margin: 0 auto;
-        background-color: rgba(255, 255, 255, .9);
-        border-radius: .2rem;
         font-size: .426rem;
         color: #535353;
         display: flex;
         align-items: center;
         margin-top: .7rem;
+
+        /deep/ .van-cell {
+          border: 1PX solid rgb(193, 193, 193);
+          border-radius: .2rem;
+          background-color: rgba(255, 255, 255, .8);
+          padding-left: 0;
+
+          .van-field__label {
+            width: 1.86rem;
+            color: #535353;
+            font-size: .426rem;
+          }
+
+          .van-field__control {
+            font-size: .426rem;
+            letter-spacing: .05rem;
+          }
+        }
       }
-      .unpdate_button{
+
+      .unpdate_button {
         width: 80%;
+        height: 1.05rem;
         box-shadow: 0px 0px 20px rgb(143, 155, 173);
-        background: rgba(255, 255, 255,.5) none repeat scroll 0% 0%;
+        background: rgba(255, 255, 255, .5) none repeat scroll 0% 0%;
         color: rgb(55, 71, 130);
-        letter-spacing: .266rem;
-        margin-top: 6.4em;
+        letter-spacing: .16rem;
+        margin-top: 4.4em;
       }
     }
 
