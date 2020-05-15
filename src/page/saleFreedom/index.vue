@@ -29,7 +29,7 @@
     </van-cell-group>
     <van-field class="xt" v-model="message" rows="2" autosize label="备注(选填)" type="textarea" maxlength="50" placeholder="请输入内容"
       show-word-limit />
-    <van-calendar v-model="show" @confirm="onConfirm" />
+    <van-calendar v-model="show" @select="onConfirm" :show-confirm="false" />
     <div class="free-footer">
       <van-button type="primary" class="free-footer-button" @click="toY('/orderDetail')">提交订单</van-button>
     </div>
@@ -142,9 +142,15 @@
     .van-cell__value {
       font-size: .453rem;
     }
-    .h{
+
+    .h {
       /deep/ .van-cell {
         height: 1.5rem;
+        align-items: center;
+      }
+
+      /deep/ .van-field__label span {
+        display: flex;
         align-items: center;
       }
     }

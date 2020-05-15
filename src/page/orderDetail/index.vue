@@ -1,6 +1,6 @@
 <template>
   <div class="orderExamine">
-   
+
     <div class="orderExamine-xg">
       <van-cell title="订单号" value="2211">
         <template #icon>
@@ -240,7 +240,7 @@
 
       /deep/ .van-cell__title {
         font-size: .4533rem;
-        color: #95e1bc;
+        color: #333;
       }
       /deep/ .van-cell__value {
         font-size: .4533rem;
