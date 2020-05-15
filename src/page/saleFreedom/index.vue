@@ -25,10 +25,9 @@
       </div>
     </div>
     <van-cell-group class="free-bottom">
-      <van-field label="购票人电话" class="h" label-width="2.6rem" placeholder="请输入电话" />
+      <van-field label="购票人电话" class="h" type="Number" label-width="2.6rem" placeholder="请输入电话" />
     </van-cell-group>
-    <van-field class="xt" v-model="message" rows="2" autosize label="备注(选填)" type="textarea" maxlength="50" placeholder="请输入内容"
-      show-word-limit />
+    <van-field class="xt" v-model="message" rows="3" autosize placeholder="备注(选填)" type="textarea" />
     <van-calendar v-model="show" @select="onConfirm" :show-confirm="false" />
     <div class="free-footer">
       <van-button type="primary" class="free-footer-button" @click="toY('/orderDetail')">提交订单</van-button>
@@ -47,7 +46,8 @@
     Field,
     Button,
     Icon,
-    Notify
+    Notify,
+    NumberKeyboard 
   } from 'vant';
   export default {
     components: {
@@ -57,7 +57,7 @@
       [Field.name]: Field,
       [Button.name]: Button,
       [Icon.name]: Icon,
-      [Notify.name]: Notify
+      [Notify.name]: Notify,
     },
     data() {
       return {
@@ -65,11 +65,16 @@
         value: 1,
         message: '',
         inputNum: 1,
-        res: '2020-2-2'
+        res: ''
       }
     },
+    mounted() {
+      this.todays()
+    },
     methods: {
-
+      todays(){
+       this.res=this.formatDate(new Date())
+      },
       toY(val) {
         let _this = this;
         Notify({
@@ -84,7 +89,19 @@
         });
       },
       formatDate(date) {
-        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+        let y=''
+        let r=''
+        if(date.getMonth() + 1<10){
+          y=`0${date.getMonth() + 1}`
+        }else{
+           y=`${date.getMonth() + 1}`
+        }
+        if(date.getDate()<10){
+          r=`0${date.getDate()}`
+        }else{
+          r=`${date.getDate()}`
+        }
+        return `${date.getFullYear()}-${y}-${r}`;
       },
       onConfirm(date) {
         this.show = false;

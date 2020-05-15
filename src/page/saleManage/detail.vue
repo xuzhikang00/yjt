@@ -1,113 +1,6 @@
 <template>
   <div class="sale-manage">
-    <div v-if="!ssSwitch">
-
-      <van-tabs v-model="active" animated title-active-color="#1aad19" sticky v-if="!titleFont">
-        <van-tab title="今日售票">
-          <div class="sale-manage-btn">
-            <van-button round type="default" class="sale-manage-button" @click="show=!show">所有窗口</van-button>
-          </div>
-          <div class="home-sale-price">
-            <div class="home-sale-price-item">
-              <div>
-                <van-icon name="chat-o" color="#1989fa" />
-                总购票人数
-              </div>
-              <div style="font-size: .453rem;color: #ff5346;">12312</div>
-            </div>
-            <div class="home-sale-price-item">
-              <div style="display: flex;align-items: center;justify-content: center;">
-                <van-icon name="gold-coin" color="#f7ab07" size=".586rem" style="margin-right: .1rem;" />
-                总售票金额
-              </div>
-              <div style="font-size: .453rem;color: #ff5346;">¥15196.21</div>
-            </div>
-          </div>
-          <sale></sale>
-        </van-tab>
-        <van-tab title="昨日售票">
-          <div class="sale-manage-btn">
-            <van-button round type="default" class="sale-manage-button" @click="show=!show">所有窗口</van-button>
-          </div>
-          <div class="home-sale-price">
-            <div class="home-sale-price-item">
-              <div>
-                <van-icon name="chat-o" color="#1989fa" />
-                总购票人数
-              </div>
-              <div style="font-size: .453rem;color: #ff5346;">12312</div>
-            </div>
-            <div class="home-sale-price-item">
-              <div style="display: flex;align-items: center;justify-content: center;">
-                <van-icon name="gold-coin" color="#f7ab07" size=".586rem" style="margin-right: .1rem;" />
-                总售票金额
-              </div>
-              <div style="font-size: .453rem;color: #ff5346;">¥15196.21</div>
-            </div>
-          </div>
-          <sale></sale>
-        </van-tab>
-
-        <van-tab title="全部售票">
-          <div class="sale-manage-btn">
-            <van-button round type="default" class="sale-manage-button" @click="show=!show">所有窗口</van-button>
-          </div>
-          <div class="home-sale-price">
-            <div class="home-sale-price-item">
-              <div>
-                <van-icon name="chat-o" color="#1989fa" />
-                总购票人数
-              </div>
-              <div style="font-size: .453rem;color: #ff5346;">12312</div>
-            </div>
-            <div class="home-sale-price-item">
-              <div style="display: flex;align-items: center;justify-content: center;">
-                <van-icon name="gold-coin" color="#f7ab07" size=".586rem" style="margin-right: .1rem;" />
-                总售票金额
-              </div>
-              <div style="font-size: .453rem;color: #ff5346;">¥15196.21</div>
-            </div>
-          </div>
-          <sale></sale>
-        </van-tab>
-      </van-tabs>
-
-      <div class="sale-manage-content" v-if="titleFont">
-        <!-- <div class="sale-manage-content-title" sticky> -->
-        <van-tabs v-model="active2" animated title-active-color="#333" sticky>
-          <van-tab :title="titleFont">
-            <div class="sale-manage-btn">
-              <van-button round type="default" class="sale-manage-button" @click="show=!show">所有窗口</van-button>
-            </div>
-            <div class="home-sale-price">
-              <div class="home-sale-price-item">
-                <div>
-                  <van-icon name="chat-o" color="#1989fa" />
-                  总购票人数
-                </div>
-                <div style="font-size: .453rem;color: #ff5346;">12312</div>
-              </div>
-              <div class="home-sale-price-item">
-                <div style="display: flex;align-items: center;justify-content: center;">
-                  <van-icon name="gold-coin" color="#f7ab07" size=".586rem" style="margin-right: .1rem;" />
-                  总售票金额
-                </div>
-                <div style="font-size: .453rem;color: #ff5346;">¥15196.21</div>
-              </div>
-            </div>
-            <sale></sale>
-            <ticket></ticket>
-          </van-tab>
-        </van-tabs>
-      </div>
-      <div class="no-data">
-        没有更多数据了
-      </div>
-      <div class="orsale-manage-button">
-        <van-button class="orsale-manage-button-item" type="primary" size="large" @click="ssd()">搜索</van-button>
-      </div>
-    </div>
- <!--   <div style="padding-top: .5rem;" v-else>
+    <div style="padding-top: .5rem;">
       <van-cell title="开始日期" :value="startDate" @click="showS = true" />
       <van-cell title="结束日期" :value="endDate" @click="showS1 = true" />
       <van-cell title="票种" @click="showS2 = true" is-link :value="xz1" />
@@ -122,9 +15,9 @@
         <van-cell title="打折面单人" @click="showS6 = true" is-link :value="xz5" />
         <van-cell title="收款类型" @click="showS8 = true" is-link :value="xz6" />
         <div class="ss-button">
-          <van-button class="ss-button-item" type="primary" size="large" @click="ssjgBnt()">搜索</van-button>
+          <van-button class="ss-button-item" type="primary" size="large" @click="ssd()">搜索</van-button>
         </div>
-    </div> -->
+    </div>
 
 
     <div class="free-home" @click="goHome">
@@ -351,7 +244,7 @@
     },
     methods: {
       ssd(){
-        this.$router.push({path:'/saleManageDetail'})
+        this.$router.push({path:'/saleManageDetails',query:{ld:'搜索结果'}})
       },
       ssjgBnt(){
         this.ssSwitch=false;
@@ -438,7 +331,10 @@
         this.endDate=`${data.getFullYear()}-${data.getMonth()+1}-${data.getDay()}`
       },
       getName(val) {
-       this.$router.push({path:'/saleManageDetails',query:{ld:val}})
+        this.$router.push({path:'/saleManageDetails',query:{ld:val}})
+        // this.titleFont = val;
+        // this.show = false
+        // console.log(this.titleFont)
       },
       closeBtn(){
         this.showS = false

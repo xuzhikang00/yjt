@@ -50,12 +50,32 @@ const router= new Router({
       }
     },
     {
+      path: '/orderManageDetail',
+      name: 'orderManageDetail',
+      component: () => import('@/page/orderManage/detail'),
+    },
+    {
+      path: '/orderManageDetails',
+      name: 'orderManageDetails',
+      component: () => import('@/page/orderManage/details'),
+    },
+    {
       path: '/saleManage',
       name: 'saleManage',
       component: () => import('@/page/saleManage/index'),
       meta: {
         title: '售票管理'
       }
+    },
+    {
+      path: '/saleManageDetail',
+      name: 'saleManageDetail',
+      component: () => import('@/page/saleManage/detail'),
+    },
+    {
+      path: '/saleManageDetails',
+      name: 'saleManageDetails',
+      component: () => import('@/page/saleManage/details'),
     },
     {
       path: '/orderExamine',
@@ -72,6 +92,11 @@ const router= new Router({
       meta: {
         title: '渠道管理'
       }
+    },
+    {
+      path: '/channelManages',
+      name: 'channelManages',
+      component: () => import('@/page/channelManage/detail'),
     },
     {
       path: '/accountSet',

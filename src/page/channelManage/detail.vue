@@ -3,13 +3,7 @@
     <div class="free-home" @click="goHome">
       <van-icon class="free-home-icon" name="wap-home-o" />
     </div>
-    <div v-if="!xgSwitch" style="height: 100%;">
-      <channel @xgDefine="xgDefine"></channel>
-      <div class="order-manage-button">
-        <van-button class="order-manage-button-item" type="primary" size="large" @click="ssd()">添加渠道</van-button>
-      </div>
-    </div>
-    <div v-if="xgSwitch" class="orderExamine-xg">
+    <div class="orderExamine-xg">
       <van-cell title="所属角色" is-link :value="user" @click="show=!show" />
       <van-cell title="登录账号" value="hdah1" />
       <van-field label="用户姓名" placeholder="请输入用户姓名" />
@@ -18,7 +12,7 @@
       <van-field label="支付密码" placeholder="*留空则不修改" />
       <van-cell title="授权票种" is-link :value="pzval" @click="show1=!show1" />
       <div class="orderExamine-xg-button">
-        <van-button class="orderExamine-xg-button-item" type="primary" size="large" @click='save'>保存</van-button>
+        <van-button class="orderExamine-xg-button-item" type="primary" size="large" @click='ssd'>保存</van-button>
       </div>
     </div>
     <van-popup v-model="show" position="bottom">
@@ -128,7 +122,15 @@
     },
     methods: {
       ssd(){
-        this.$router.push({path:'channelManages'})
+        let _this=this
+        Notify({
+          type: 'success',
+          message: '保存成功',
+          duration: 1000,
+          onOpened(){
+            _this.$router.push({path:'channelManage'})
+          }
+        });
       },
       xgDefine(data){
         this.xgSwitch=data;

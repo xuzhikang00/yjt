@@ -4,7 +4,7 @@
     <div class="account-content">
       <van-field label="新密码" placeholder="请输入密码" />
       <van-field label="确认密码" placeholder="请输入确认密码" />
-      <van-field center clearable label="短信验证码" placeholder="请输入短信验证码">
+      <van-field center clearable v-model="phones" label="手机号" placeholder="请输入短信验证码" readonly >
         <template #button>
           <div style="width: .8rem;" v-if="showIS">{{number}}</div>
           <van-button size="small" type="primary" v-else @click="startNum">发送验证码</van-button>
@@ -43,6 +43,7 @@
     },
     data() {
       return {
+        phones:'138***88888',
         show: false,
         switchNum: 1,
         number: 120,
