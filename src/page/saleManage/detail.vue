@@ -2,7 +2,7 @@
   <div class="sale-manage">
     <div style="padding-top: .5rem;">
       <van-cell title="开始日期" :value="startDate" @click="showS = true" />
-      <van-cell title="结束日期" :value="endDate" @click="showS1 = true" />
+      <van-cell title="结束日期" :value="endDate"  @click="showS = true" />
       <van-cell title="票种" @click="showS2 = true" is-link :value="xz1" />
        <van-cell title="渠道" @click="showS7 = true" is-link :value="xz7" />
       <van-field placeholder="请输入订单号" label="订单号" />
@@ -150,6 +150,7 @@
         @change="onChange8"
       />
     </van-popup>
+      <van-calendar v-model="showS" @select="onConfirmS" type="range" :show-confirm="false" />
   </div>
 </template>
 
@@ -190,8 +191,8 @@
         ssSwitch:false,
         dates: null,
         date1:null,
-        startDate:'2020-1-23',
-        endDate:'2020-5-23',
+        startDate:'',
+        endDate:'',
         showS: false,
         showS1:false,
         showS2:false,
@@ -243,6 +244,34 @@
       }
     },
     methods: {
+      formatDate(date) {
+        let y=''
+        let r=''
+        if(date.getMonth() + 1<10){
+          y=`0${date.getMonth() + 1}`
+        }else{
+           y=`${date.getMonth() + 1}`
+        }
+        if(date.getDate()<10){
+          r=`0${date.getDate()}`
+        }else{
+          r=`${date.getDate()}`
+        }
+        return `${date.getFullYear()}-${y}-${r}`;
+      },
+      onConfirmS(date) {
+        this.endDate =''
+        this.startDate=''
+        if(date[0]){
+          this.startDate = this.formatDate(date[0]);
+        }
+        if(date[1]){
+          this.endDate = this.formatDate(date[1]);
+        }
+        if(date.length==2 && this.endDate && this.startDate){
+          this.showS = false;
+        }
+      },
       ssd(){
         this.$router.push({path:'/saleManageDetails',query:{ld:'搜索结果'}})
       },

@@ -16,13 +16,16 @@
       <div style="flex: 1;overflow-y: auto;padding: 0 .1rem;" @scroll="scol($event)">
         <div v-for="item in tablea" style="margin-top: .3rem;">
           <div class="ticket-box">
-            <div v-for="(item1,index) in item.tableData1" :class="index==0?'ticket-item ticket-item-top-name':'ticket-item ticket-item-top-title'">
+            <div v-for="(item1,index) in item.tableData1" @click="goS(index)" :class="index==0?'ticket-item ticket-item-top-name':'ticket-item ticket-item-top-title'">
               {{item1}}
             </div>
           </div>
           <div class="ticket-box">
             <div class="ticket-item ticket-item-top-title" v-for="item2 in item.tableData2">
               {{item2}}
+            </div>
+            <div class="ticket-item ticket-item-top-title">
+               <van-button type="primary" size="small" @click="djBtn()">审核</van-button>
             </div>
           </div>
         </div>
@@ -44,20 +47,26 @@
 <script>
   import {
     Icon,
-    Loading
+    Loading,
+    Button,
+    Dialog,
+    Notify
   } from 'vant';
   // import ticket from '@/components/ticketManage.vue'
   export default {
     components: {
       [Icon.name]: Icon,
-      [Loading.name]: Loading
+      [Loading.name]: Loading,
+      [Button.name]: Button,
+      [Dialog.name]: Dialog,
+      [Notify.name]: Notify,
     },
     data() {
       return {
         loging:false,
         nodata:false,
         top1: ['姓名', '电话', '日期', '订单号', '订单数'],
-        top2: ['票型', '支付状态', '订单状态', '渠道', '到访数'],
+        top2: ['票型', '支付状态', '订单状态', '渠道', '操作'],
         tablea: []
 
       }
@@ -67,55 +76,80 @@
       setTimeout(()=>{
         this.tablea =[{
             tableData1: ['真真', 15515151, '2020-20-03', 214, 1],
-            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚', 0]
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
           },
           {
             tableData1: ['真真', 15515151, '2020-20-03', 214, 1],
-            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚', 0]
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
           },
           {
             tableData1: ['真真', 15515151, '2020-20-03', 214, 1],
-            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚', 0]
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
           },
           {
             tableData1: ['真真', 15515151, '2020-20-03', 214, 1],
-            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚', 0]
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
           },
           {
             tableData1: ['真真', 15515151, '2020-20-03', 214, 1],
-            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚', 0]
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
           },
           {
             tableData1: ['真真', 15515151, '2020-20-03', 214, 1],
-            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚', 0]
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
           },
           {
             tableData1: ['真真', 15515151, '2020-20-03', 214, 1],
-            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚', 0]
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
           },
           {
             tableData1: ['真真', 15515151, '2020-20-03', 214, 1],
-            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚', 0]
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
           },
           {
             tableData1: ['真真', 15515151, '2020-20-03', 214, 1],
-            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚', 0]
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
           }, {
             tableData1: ['真真', 15515151, '2020-20-03', 214, 1],
-            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚', 0]
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
           }
         ]
         this.loging=false;
       },1000)
     },
     methods: {
+      djBtn() {
+        let _this = this
+        Dialog.confirm({
+            cancelButtonText:'拒绝',
+            message: '您确定要审核通过该订单吗？',
+          })
+          .then(() => {
+            Notify({
+              type: 'success',
+              message: '操作成功',
+              duration: 1000,
+              onOpened() {
+               _this.$router.push({path:"/orderExamine"})
+              }
+            });
+          })
+          .catch(() => {
+            // on cancel
+          });
+      },
+      goS(index){
+        if(index==0){
+          this.$router.push({path:"/personDetail"})
+        }
+      },
       getData(){
           this.tablea.push({
             tableData1: ['真真', 15515151, '2020-20-03', 214, 1],
-            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚', 0]
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
           }, {
             tableData1: ['真真', 15515151, '2020-20-03', 214, 1],
-            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚', 0]
+            tableData2: ['随时订测试', '景区到付', '未使用', '陈思诚']
           })
       },
       scol(e){

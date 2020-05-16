@@ -126,6 +126,11 @@ const router= new Router({
       path: '/orderDetail',
       name: 'orderDetail',
       component: () => import('@/page/orderDetail/index'),
+    },
+    {
+      path: '/personDetail',
+      name: 'personDetail',
+      component: () => import('@/page/personDetail/index'),
     }
   ]
 })

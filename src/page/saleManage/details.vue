@@ -25,7 +25,7 @@
               </div>
             </div>
             <sale></sale>
-            <ticket></ticket>
+            <!-- <ticket></ticket> -->
           </van-tab>
         </van-tabs>
       </div>

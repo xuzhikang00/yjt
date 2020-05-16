@@ -7,7 +7,7 @@
       <div class="unpdate_input">
         <van-field placeholder="4993" label-align="left" label="取票机:" />
       </div>
-      <van-button class="unpdate_button" type="default" size="large">更新余票</van-button>
+      <van-button class="unpdate_button" type="default" size="large" @click="gx">更新余票</van-button>
     </div>
     <div class="free-home" @click="goHome">
       <van-icon class="free-home-icon" name="wap-home-o" />
@@ -19,15 +19,24 @@
   import {
     Field,
     Button,
-    Icon
+    Icon,
+    Notify
   } from 'vant';
   export default {
     components: {
       [Field.name]: Field,
       [Button.name]: Button,
-      [Icon.name]: Icon
+      [Icon.name]: Icon,
+      [Notify.name]: Notify
     },
     methods: {
+      gx(){
+        Notify({
+          type: 'success',
+          message: '更新成功',
+          duration: 1000,
+        });
+      },
       goHome() {
         this.$router.push({
           path: '/home'

@@ -31,10 +31,26 @@
 
     <div class="home-bottom">
       <div class="home-bottom-item">
-        <div class="home-bottom-item-data" @click="goRouter('/unpdatePiao')">
-          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n3.png" alt="">
-          <div>更新取票机余票</div>
+        <div class="home-bottom-item-data" @click="goRouter('/saleManage')">
+          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n2.png" alt="">
+          <div>售票管理</div>
         </div>
+        <div class="home-bottom-item-data" @click="goRouter('/orderManage')">
+          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n1.png" alt="">
+          <div>订单管理</div>
+        </div>
+        <div class="home-bottom-item-data" @click="goRouter('/orderExamine')">
+          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n4.png" alt="">
+          <div>订单审核</div>
+        </div>
+
+
+
+
+
+      </div>
+
+      <div class="home-bottom-item">
         <div class="home-bottom-item-data" @click="goRouter('/saleFreedom')">
           <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n3.png" alt="">
           <div>出免费票</div>
@@ -43,8 +59,16 @@
           <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n3.png" alt="">
           <div>套票查车</div>
         </div>
+        <div class="home-bottom-item-data" @click="goRouter('/unpdatePiao')">
+          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n3.png" alt="">
+          <div>更新取票机余票</div>
+        </div>
       </div>
       <div class="home-bottom-item">
+        <div class="home-bottom-item-data" @click="goRouter('/channelManage')" >
+          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n5.png" alt="">
+          <div>渠道管理</div>
+        </div>
         <div class="home-bottom-item-data">
           <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n5.png" alt="">
           <div>报表统计</div>
@@ -53,30 +77,12 @@
           <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n5.png" alt="">
           <div>OTA销售表</div>
         </div>
-        <div class="home-bottom-item-data" @click="goRouter('/orderManage')">
-          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n1.png" alt="">
-          <div>订单管理</div>
-        </div>
       </div>
       <div class="home-bottom-item">
-        <div class="home-bottom-item-data" @click="goRouter('/saleManage')">
-          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n2.png" alt="">
-          <div>售票管理</div>
-        </div>
-        <div class="home-bottom-item-data">
-          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n3.png" alt="">
-          <div>财务管理</div>
-        </div>
-        <div class="home-bottom-item-data" @click="goRouter('/orderExamine')">
-          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n4.png" alt="">
-          <div>订单审核</div>
-        </div>
-      </div>
-      <div class="home-bottom-item">
-        <div class="home-bottom-item-data" @click="goRouter('/channelManage')" >
-          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n5.png" alt="">
-          <div>渠道管理</div>
-        </div>
+       <div class="home-bottom-item-data">
+         <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n3.png" alt="">
+         <div>财务管理</div>
+       </div>
         <div class="home-bottom-item-data" @click="goRouter('/accountSet')" >
           <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n6.png" alt="">
           <div>账户设置</div>
@@ -114,7 +120,7 @@
     background-color: #eee;
 
     .home-top {
-      height: 11rem;
+      height: 6.5rem;
       background-color: #fff;
       display: flex;
       flex-direction: column;

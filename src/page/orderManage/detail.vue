@@ -2,7 +2,7 @@
   <div class="order-manage" v-if="ssSwitch">
     <div style="padding-top: .5rem;">
       <van-cell title="开始日期" :value="startDate" @click="showS = true" />
-      <van-cell title="结束日期" :value="endDate" @click="showS1 = true" />
+      <van-cell title="结束日期" :value="endDate"   @click="showS = true"/>
       <van-cell title="票种" @click="showS2 = true" is-link :value="xz1" />
       <van-field placeholder="请输入订单号" label="订单号" />
       <van-field placeholder="请输入票号" label="票号" />
@@ -18,7 +18,7 @@
     <div class="free-home" @click="goHome">
       <van-icon class="free-home-icon" name="wap-home-o" />
     </div>
-     <van-calendar v-model="showS" @select="onConfirmS" :show-confirm="false" />
+     <van-calendar v-model="showS" @select="onConfirmS" type="range" :show-confirm="false" />
      <van-calendar v-model="showS1" @select="onConfirm1" :show-confirm="false" />
     <!-- <van-popup v-model="showS" position="bottom">
       <van-datetime-picker @change="changeShowS" @confirm="closeBtn" cancel="closeBtn" v-model="dates" type="date" title="开始日期" />
@@ -203,8 +203,17 @@
         return `${date.getFullYear()}-${y}-${r}`;
       },
       onConfirmS(date) {
-        this.showS = false;
-        this.startDate = this.formatDate(date);
+        this.endDate =''
+        this.startDate=''
+        if(date[0]){
+          this.startDate = this.formatDate(date[0]);
+        }
+        if(date[1]){
+          this.endDate = this.formatDate(date[1]);
+        }
+        if(date.length==2 && this.endDate && this.startDate){
+          this.showS = false;
+        }
       },
       onConfirm1(date) {
         this.showS1 = false;

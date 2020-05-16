@@ -597,6 +597,9 @@
       // }
     },
     mounted() {
+      if(this.$route.query.id){
+        this.active=this.$route.query.id
+      }
       this.$refs.ticket1.setData()
     },
     methods: {

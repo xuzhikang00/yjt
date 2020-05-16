@@ -15,7 +15,7 @@
 
     <div v-for="item in tablea" style="margin-top: .3rem;">
       <div class="ticket-box">
-        <div v-for="(item1,index) in item.tableData1" :class="index==0?'ticket-item ticket-item-top-name':'ticket-item ticket-item-top-title'">
+        <div v-for="(item1,index) in item.tableData1" @click="goS(index)" :class="index==0?'ticket-item ticket-item-top-name':'ticket-item ticket-item-top-title'">
           {{item1}}
         </div>
       </div>
@@ -56,6 +56,11 @@
 
     },
     methods: {
+      goS(index){
+        if(index==0){
+          this.$router.push({path:"/orderDetail"})
+        }
+      },
       setData(){
         this.tablea=[]
         this.loging=true;
