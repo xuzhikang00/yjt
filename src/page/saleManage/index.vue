@@ -5,20 +5,20 @@
       <van-tabs v-model="active" animated title-active-color="#1aad19" sticky v-if="!titleFont">
         <van-tab title="今日售票">
           <div class="sale-manage-btn">
-            <van-button round type="default" class="sale-manage-button" @click="show=!show">所有窗口</van-button>
+            <van-button round type="default" class="sale-manage-button" @click="show=!show">注意事项</van-button>
           </div>
           <div class="home-sale-price">
             <div class="home-sale-price-item">
               <div>
                 <van-icon name="chat-o" color="#1989fa" />
-                总购票人数
+                今日购票张数
               </div>
               <div style="font-size: .453rem;color: #ff5346;">12312</div>
             </div>
             <div class="home-sale-price-item">
               <div style="display: flex;align-items: center;justify-content: center;">
                 <van-icon name="gold-coin" color="#f7ab07" size=".586rem" style="margin-right: .1rem;" />
-                总售票金额
+                今日售票金额
               </div>
               <div style="font-size: .453rem;color: #ff5346;">¥15196.21</div>
             </div>
@@ -27,20 +27,20 @@
         </van-tab>
         <van-tab title="昨日售票">
           <div class="sale-manage-btn">
-            <van-button round type="default" class="sale-manage-button" @click="show=!show">所有窗口</van-button>
+            <van-button round type="default" class="sale-manage-button" @click="show=!show">注意事项</van-button>
           </div>
           <div class="home-sale-price">
             <div class="home-sale-price-item">
               <div>
                 <van-icon name="chat-o" color="#1989fa" />
-                总购票人数
+                昨日购票人数
               </div>
               <div style="font-size: .453rem;color: #ff5346;">12312</div>
             </div>
             <div class="home-sale-price-item">
               <div style="display: flex;align-items: center;justify-content: center;">
                 <van-icon name="gold-coin" color="#f7ab07" size=".586rem" style="margin-right: .1rem;" />
-                总售票金额
+                昨日售票金额
               </div>
               <div style="font-size: .453rem;color: #ff5346;">¥15196.21</div>
             </div>
@@ -50,20 +50,20 @@
 
         <van-tab title="今年售票">
           <div class="sale-manage-btn">
-            <van-button round type="default" class="sale-manage-button" @click="show=!show">所有窗口</van-button>
+            <van-button round type="default" class="sale-manage-button" @click="show=!show">注意事项</van-button>
           </div>
           <div class="home-sale-price">
             <div class="home-sale-price-item">
               <div>
                 <van-icon name="chat-o" color="#1989fa" />
-                总购票人数
+                今年购票人数
               </div>
               <div style="font-size: .453rem;color: #ff5346;">12312</div>
             </div>
             <div class="home-sale-price-item">
               <div style="display: flex;align-items: center;justify-content: center;">
                 <van-icon name="gold-coin" color="#f7ab07" size=".586rem" style="margin-right: .1rem;" />
-                总售票金额
+                今年售票金额
               </div>
               <div style="font-size: .453rem;color: #ff5346;">¥15196.21</div>
             </div>
@@ -77,7 +77,7 @@
         <van-tabs v-model="active2" animated title-active-color="#333" sticky>
           <van-tab :title="titleFont">
             <div class="sale-manage-btn">
-              <van-button round type="default" class="sale-manage-button" @click="show=!show">所有窗口</van-button>
+              <van-button round type="default" class="sale-manage-button" @click="show=!show">注意事项</van-button>
             </div>
             <div class="home-sale-price">
               <div class="home-sale-price-item">
@@ -100,9 +100,9 @@
           </van-tab>
         </van-tabs>
       </div>
-      <div class="no-data">
+     <!-- <div class="no-data">
         没有更多数据了
-      </div>
+      </div> -->
       <div class="orsale-manage-button">
         <van-button class="orsale-manage-button-item" type="primary" size="large" @click="ssd()">搜索</van-button>
       </div>
@@ -130,14 +130,16 @@
     <div class="free-home" @click="goHome">
       <van-icon class="free-home-icon" name="wap-home-o" />
     </div>
-    <van-popup v-model="show" position="bottom">
+    <van-popup v-model="show"  position="bottom">
       <div class="pop-header">
         <div></div>
-        <div>所有窗口</div>
-        <div style="color: #04be02;margin-right: .3rem;" @click="show=false">关闭</div>
+        <div>注意事项</div>
+        <van-icon @click="show=false" style="margin-right: .3rem;" name="cross" />
+        <!-- <div style="color: #04be02;margin-right: .3rem;" @click="show=false">关闭</div> -->
       </div>
       <div class="pop-header-content">
-        <div class="pop-header-content-item" @click="getName('所有窗口')">
+          备注内容:默认为支付成功的订单，微信与支付宝的金额是包含手续费的
+        <!-- <div class="pop-header-content-item" @click="getName('所有窗口')">
           <div class="pop-header-content-item-radiu pop-header-content-item-radiu1">总</div>
           <div>所有窗口</div>
         </div>
@@ -178,7 +180,7 @@
         <div class="pop-header-content-item" @click="getName('chenfeng')">
           <div class="pop-header-content-item-radiu pop-header-content-item-radiu9">chen</div>
           <div>chenfeng</div>
-        </div>
+        </div> -->
       </div>
     </van-popup>
     <van-popup v-model="showS" position="bottom">
@@ -464,7 +466,7 @@
 
   .sale-manage {
     height: 100%;
-    background-color: #eee;
+    background-color: #fff;
     position: relative;
     /deep/ .van-cell__title,.van-cell__value{
       font-size: .4533rem;
@@ -588,6 +590,8 @@
 
     .pop-header-content {
       display: flex;
+      padding: 1rem .3rem;
+      font-size: .453rem;
 
       .pop-header-content-item {
         flex: 1;
