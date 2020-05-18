@@ -14,14 +14,20 @@
       <div class="home-sale-price">
         <div class="home-sale-price-item">
           <div style="display: flex;align-items: center;justify-content: center;">
-            <van-icon class="iconfont" class-prefix='icon' name='ziyuan' color="#639eff" size=".586rem" style="margin-right: .1rem;"  />
+            <img src="/static/images/1.png" alt="" style="height: .5rem;
+    width: .5rem;
+    margin-right: .2rem;">
+            <!-- <van-icon class="iconfont" class-prefix='icon' name='ziyuan' color="#639eff" size=".586rem" style="margin-right: .1rem;"  /> -->
             总购票人数
           </div>
           <div style="font-size: .4rem;" >12312</div>
         </div>
         <div class="home-sale-price-item">
           <div style="display: flex;align-items: center;justify-content: center;">
-            <van-icon name="gold-coin" color="#f7ab07" size=".586rem" style="margin-right: .1rem;" />
+            <img src="/static/images/2.png" alt="" style="height: .5rem;
+    width: .5rem;
+    margin-right: .2rem;">
+            <!-- <van-icon name="gold-coin" color="#f7ab07" size=".586rem" style="margin-right: .1rem;" /> -->
             总售票金额
           </div>
           <div style="font-size: .4rem;">¥15196.21</div>
@@ -32,15 +38,15 @@
     <div class="home-bottom">
       <div class="home-bottom-item">
         <div class="home-bottom-item-data" @click="goRouter('/saleManage')">
-          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n2.png" alt="">
+          <img class="home-bottom-item-data-img" src="/static/images/i1.png" alt="">
           <div>售票管理</div>
         </div>
         <div class="home-bottom-item-data" @click="goRouter('/orderManage')">
-          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n1.png" alt="">
+          <img class="home-bottom-item-data-img" src="/static/images/i2.png" alt="">
           <div>订单管理</div>
         </div>
         <div class="home-bottom-item-data" @click="goRouter('/orderExamine')">
-          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n4.png" alt="">
+          <img class="home-bottom-item-data-img" src="/static/images/i3.png" alt="">
           <div>订单审核</div>
         </div>
 
@@ -52,43 +58,43 @@
 
       <div class="home-bottom-item">
         <div class="home-bottom-item-data" @click="goRouter('/saleFreedom')">
-          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n3.png" alt="">
+          <img class="home-bottom-item-data-img" src="/static/images/i4.png" alt="">
           <div>出免费票</div>
         </div>
         <div class="home-bottom-item-data">
-          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n3.png" alt="">
+          <img class="home-bottom-item-data-img" src="/static/images/i5.png" alt="">
           <div>套票查车</div>
         </div>
         <div class="home-bottom-item-data" @click="goRouter('/unpdatePiao')">
-          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n3.png" alt="">
+          <img class="home-bottom-item-data-img" src="/static/images/i6.png" alt="">
           <div>更新取票机余票</div>
         </div>
       </div>
       <div class="home-bottom-item">
         <div class="home-bottom-item-data" @click="goRouter('/channelManage')" >
-          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n5.png" alt="">
+          <img class="home-bottom-item-data-img" src="/static/images/i7.png" alt="">
           <div>渠道管理</div>
         </div>
         <div class="home-bottom-item-data">
-          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n5.png" alt="">
+          <img class="home-bottom-item-data-img" src="/static/images/i8.png" alt="">
           <div>报表统计</div>
         </div>
         <div class="home-bottom-item-data">
-          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n5.png" alt="">
+          <img class="home-bottom-item-data-img" src="/static/images/i9.png" alt="">
           <div>OTA销售表</div>
         </div>
       </div>
       <div class="home-bottom-item">
        <div class="home-bottom-item-data">
-         <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n3.png" alt="">
+         <img class="home-bottom-item-data-img" src="/static/images/i10.png" alt="">
          <div>财务管理</div>
        </div>
         <div class="home-bottom-item-data" @click="goRouter('/accountSet')" >
-          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n6.png" alt="">
+          <img class="home-bottom-item-data-img" src="/static/images/i11.png" alt="">
           <div>账户设置</div>
         </div>
         <div class="home-bottom-item-data">
-          <img class="home-bottom-item-data-img" src="http://zlpl2.1230t.com/v1/wap_newadmin/images/n7.png" alt="">
+          <img class="home-bottom-item-data-img" src="/static/images/i12.png" alt="">
           <div>日志记录</div>
         </div>
       </div>

@@ -25,7 +25,8 @@
       </div>
     </div>
     <van-cell-group class="free-bottom">
-      <van-field label="购票人电话" class="h" type="Number" label-width="2.6rem" placeholder="请输入电话" />
+      <van-field label="购票人电话" required :error-message="errMsg.mobilePhone" v-model="phones" class="h" type="Number"
+        label-width="2.6rem" placeholder="请输入电话" />
     </van-cell-group>
     <van-field class="xt" v-model="message" rows="3" autosize placeholder="备注(选填)" type="textarea" />
     <van-calendar v-model="show" @select="onConfirm" :show-confirm="false" />
@@ -47,7 +48,7 @@
     Button,
     Icon,
     Notify,
-    NumberKeyboard 
+    NumberKeyboard
   } from 'vant';
   export default {
     components: {
@@ -61,6 +62,10 @@
     },
     data() {
       return {
+        errMsg: {
+          mobilePhone: ''
+        },
+        phones: null,
         show: false,
         value: 1,
         message: '',
@@ -72,11 +77,26 @@
       this.todays()
     },
     methods: {
-      todays(){
-       this.res=this.formatDate(new Date())
+      todays() {
+        this.res = this.formatDate(new Date())
       },
       toY(val) {
         let _this = this;
+        if (this.inputNum <= 0) {
+          Notify({
+            type: 'warning',
+            message: '请添加票数'
+          });
+          return false;
+        }
+        if (!this.phones) {
+          this.errMsg.mobilePhone = '请输入手机号！'
+          return false;
+        }
+        if (!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(this.phones))) {
+          this.errMsg.mobilePhone = '请输入正确的手机号！'
+          return false;
+        }
         Notify({
           type: 'success',
           message: '下单成功',
@@ -89,17 +109,17 @@
         });
       },
       formatDate(date) {
-        let y=''
-        let r=''
-        if(date.getMonth() + 1<10){
-          y=`0${date.getMonth() + 1}`
-        }else{
-           y=`${date.getMonth() + 1}`
+        let y = ''
+        let r = ''
+        if (date.getMonth() + 1 < 10) {
+          y = `0${date.getMonth() + 1}`
+        } else {
+          y = `${date.getMonth() + 1}`
         }
-        if(date.getDate()<10){
-          r=`0${date.getDate()}`
-        }else{
-          r=`${date.getDate()}`
+        if (date.getDate() < 10) {
+          r = `0${date.getDate()}`
+        } else {
+          r = `${date.getDate()}`
         }
         return `${date.getFullYear()}-${y}-${r}`;
       },

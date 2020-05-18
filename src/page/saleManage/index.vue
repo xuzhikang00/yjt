@@ -48,7 +48,7 @@
           <sale></sale>
         </van-tab>
 
-        <van-tab title="全部售票">
+        <van-tab title="今年售票">
           <div class="sale-manage-btn">
             <van-button round type="default" class="sale-manage-button" @click="show=!show">所有窗口</van-button>
           </div>

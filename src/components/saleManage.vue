@@ -1,7 +1,7 @@
 <template>
   <div class="ticket">
     <div class="ticket-box" style="border-bottom: 1PX solid #eee;padding: .2rem 0;">
-      <div class="ticket-item-top-kong"></div>
+      <div class="ticket-item-top-kong .font-title">售票端口</div>
       <div class="ticket-item ticket-item-top-word" v-for="item in top1">
         {{item}}
       </div>
@@ -14,64 +14,46 @@
             {{item1}}
           </div>
         </div>
-        <div class="ticket-box">
+       <!-- <div class="ticket-box">
           <div class="ticket-item ticket-item-top-title" v-for="item2 in item.tableData2">
             {{item2}}
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
-
-
-
+    
   </div>
 </template>
 
 <script>
+  import { Loading } from 'vant';
   export default {
+    components:{
+      [Loading.name]:Loading
+    },
     data() {
       return {
-        top1: ['原价', '打折', '渠道', '免单', '小计'],
+        top1: ['微信', '支付宝', '现金', '旅行社余额支付', 'OTA余额支付','总金额'],
         tablea: [{
-            address: '现金支付',
+            address: '自助机',
             tableData1: ['300人', '300人', '300人', '300人', '300人'],
-            tableData2: ['300人', '300人', '300人', '300人', '300人']
           },
           {
-            address: '现金支付',
+            address: '闸机闪付',
             tableData1: ['300人', '300人', '300人', '300人', '300人'],
-            tableData2: ['300人', '300人', '300人', '300人', '300人']
           },
           {
-            address: '现金支付',
+            address: '售票员A',
             tableData1: ['300人', '300人', '300人', '300人', '300人'],
-            tableData2: ['300人', '300人', '300人', '300人', '300人']
           },
           {
-            address: '成年联票B（含欢乐大马戏）',
+            address: '售票员B',
             tableData1: ['300人', '300人', '300人', '300人', '300人'],
-            tableData2: ['300人', '300人', '300人', '300人', '300人']
           },
           {
-            address: '成年联票B（含欢乐大马戏）',
+            address: '合计',
             tableData1: ['300人', '300人', '300人', '300人', '300人'],
-            tableData2: ['300人', '300人', '300人', '300人', '300人']
           },
-          {
-            address: '现金支付',
-            tableData1: ['300人', '300人', '300人', '300人', '300人'],
-            tableData2: ['300人', '300人', '300人', '300人', '300人']
-          },
-          {
-            address: '现金支付',
-            tableData1: ['300人', '300人', '300人', '300人', '300人'],
-            tableData2: ['300人', '300人', '300人', '300人', '300人']
-          },
-          {
-            address: '现金支付',
-            tableData1: ['300人', '300人', '300人', '300人', '300人'],
-            tableData2: ['300人', '300人', '300人', '300人', '300人']
-          }
         ]
 
       }
@@ -82,11 +64,14 @@
 
 <style lang="less" scoped>
   .ticket-item-top-kong {
-    width: 1.5rem;
+    width: 1.2rem;
     line-height: .7rem;
     padding-left: .2rem;
     font-size: .373rem;
     text-align: center;
+  }
+  .font-title{
+    color: #999999;
   }
 
   .ticket {
@@ -99,8 +84,8 @@
         color: #999999;
         font-size: .426rem;
         text-align: center;
-        height: .9866rem;
-        line-height: .9866rem;
+        // height: .9866rem;
+        // line-height: .9866rem;
       }
 
       .ticket-item-top-title {
